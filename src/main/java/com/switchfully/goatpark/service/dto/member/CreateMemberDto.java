@@ -49,4 +49,12 @@ public class CreateMemberDto {
     public LicensePlate getLicensePlate() {
         return licensePlate;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }

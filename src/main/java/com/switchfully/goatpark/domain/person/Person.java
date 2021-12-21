@@ -2,6 +2,7 @@ package com.switchfully.goatpark.domain.person;
 
 import com.switchfully.goatpark.domain.address.Address;
 import com.switchfully.goatpark.domain.person.emailaddress.EmailAddress;
+import com.switchfully.goatpark.domain.person.membership.Membership;
 import com.switchfully.goatpark.domain.person.phonenumber.PhoneNumber;
 
 import javax.persistence.*;
@@ -33,13 +34,17 @@ public class Person {
     @ManyToOne
     private Address address;
 
-    public Person(String name, PhoneNumber phoneNumber, PhoneNumber mobileNumber, EmailAddress emailAddress, Address address) {
-//        this.id = id;
+    @OneToOne
+    @JoinColumn(name = "fk_membership_id")
+    private Membership membership;
+
+    public Person(String name, PhoneNumber phoneNumber, PhoneNumber mobileNumber, EmailAddress emailAddress, Address address, Membership membership) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.mobileNumber = mobileNumber;
         this.emailAddress = emailAddress;
         this.address = address;
+        this.membership = membership;
     }
 
     protected Person() {
