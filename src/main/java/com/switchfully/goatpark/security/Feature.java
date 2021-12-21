@@ -1,5 +1,6 @@
 package com.switchfully.goatpark.security;
 
 public enum Feature {
-    GET_CUSTOMER_HELLO_WORLD
+    GET_CUSTOMER_HELLO_WORLD,
+    CREATE_DIVISION
 }

@@ -1,14 +1,15 @@
 package com.switchfully.goatpark.domain.division;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
-@Table (name = "DIVISIONS")
+@Table(name = "DIVISIONS")
+
 public class Division {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "divisions_id_seq", sequenceName = "DIVISIONS_ID_SEQ", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "divisions_id_seq")
     private int id;
 
     @Column(name = "name")
@@ -20,13 +21,17 @@ public class Division {
     @Column(name = "director")
     private String director;
 
-    public Division (String name, String originalName, String director) {
+    public Division(String name, String originalName, String director) {
         this.name = name;
         this.originalName = originalName;
         this.director = director;
     }
 
     private Division() {
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -40,7 +45,6 @@ public class Division {
     public String getDirector() {
         return director;
     }
-
 
 
 }
