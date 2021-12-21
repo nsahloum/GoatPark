@@ -8,4 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public interface DivisionRepository extends JpaRepository<Division, Integer> {
 
     public Division save(Division divisionToSave);
+
+    public Division findDivisionByName(String name);
+    public Division findDivisionByOriginalName(String originalName);
 }

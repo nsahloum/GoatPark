@@ -1,11 +1,16 @@
 package com.switchfully.goatpark.service.division;
 
 import com.switchfully.goatpark.domain.division.Division;
+import com.switchfully.goatpark.exception.NotUniqueException;
 import com.switchfully.goatpark.repository.division.DivisionRepository;
 import com.switchfully.goatpark.service.dto.division.CreateDivisionDto;
 import com.switchfully.goatpark.service.dto.division.DivisionDto;
 import com.switchfully.goatpark.service.mapper.DivisionMapper;
+import org.postgresql.util.PSQLException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
+
+import java.sql.SQLException;
 
 @Service
 public class DivisionService {
@@ -19,8 +24,24 @@ public class DivisionService {
 
 
     public DivisionDto createDivision(CreateDivisionDto divisionToCreate) {
+        if (!isValidDivision(divisionToCreate)) {
+            throw new NotUniqueException("This company already exist in the database");
+        }
+
         Division divisionToSave = divisionMapper.mapCreateDivisionDtoToDivision(divisionToCreate);
-        Division divisionSaved = divisionRepository.save(divisionToSave);
-        return divisionMapper.mapDivisionToDivisionDto(divisionSaved);
+        divisionRepository.save(divisionToSave);
+        return divisionMapper.mapDivisionToDivisionDto(divisionToSave);
+
+
+    }
+
+    public boolean isValidDivision(CreateDivisionDto createDivisionDto) {
+        if (divisionRepository.findDivisionByName(createDivisionDto.getName()) == null) {
+            if (divisionRepository.findDivisionByOriginalName(createDivisionDto.getOriginalName()) == null) {
+                return true;
+            }
+        }
+        return false;
+
     }
 }
