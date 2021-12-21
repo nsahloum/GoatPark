@@ -1,56 +1,37 @@
-package com.switchfully.goatpark.domain.person;
+package com.switchfully.goatpark.service.dto.member;
 
 import com.switchfully.goatpark.domain.address.Address;
 import com.switchfully.goatpark.domain.emailaddress.EmailAddress;
+import com.switchfully.goatpark.domain.person.membership.LicensePlate;
 import com.switchfully.goatpark.domain.person.phonenumber.PhoneNumber;
 
-import javax.persistence.*;
+public class CreateMemberDto {
 
-@Entity
-@Table(name = "PERSON")
-public class Person {
+    private String username;
+    private String password;
 
-    @Id
-    @GeneratedValue
-    private int id;
-
-    @Column(name = "name")
     private String name;
-
-    @JoinColumn(name = "FK_PHONENUMBER")
-    @ManyToOne
-    private PhoneNumber phoneNumber;
-
-    @JoinColumn(name = "FK_MOBILENUMBER")
-    @ManyToOne
-    private PhoneNumber mobileNumber;
-
-    @JoinColumn(name = "FK_EMAILADDRESS")
-    @OneToOne
-    private EmailAddress emailAddress;
-
-    @JoinColumn(name = "FK_ADDRESS")
-    @ManyToOne
     private Address address;
+    private PhoneNumber phoneNumber;
+    private PhoneNumber mobileNumber;
+    private EmailAddress emailAddress;
+    private LicensePlate licensePlate;
 
-    public Person(String name, PhoneNumber phoneNumber, PhoneNumber mobileNumber, EmailAddress emailAddress, Address address) {
-//        this.id = id;
+    public CreateMemberDto(String name, Address address, PhoneNumber phoneNumber, PhoneNumber mobileNumber, EmailAddress emailAddress, LicensePlate licensePlate) {
         this.name = name;
+        this.address = address;
         this.phoneNumber = phoneNumber;
         this.mobileNumber = mobileNumber;
         this.emailAddress = emailAddress;
-        this.address = address;
-    }
-
-    protected Person() {
-    }
-
-    public int getId() {
-        return id;
+        this.licensePlate = licensePlate;
     }
 
     public String getName() {
         return name;
+    }
+
+    public Address getAddress() {
+        return address;
     }
 
     public PhoneNumber getPhoneNumber() {
@@ -65,7 +46,7 @@ public class Person {
         return emailAddress;
     }
 
-    public Address getAddress() {
-        return address;
+    public LicensePlate getLicensePlate() {
+        return licensePlate;
     }
 }

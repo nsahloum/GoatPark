@@ -21,7 +21,9 @@ public class KeycloakService {
     private final RealmResource realmResource;
     private final String clientID;
 
-    public KeycloakService(Keycloak keycloak, @Value("${keycloak.realm}") String realmName, @Value("${keycloak.resource}") String clientId) {
+    public KeycloakService(Keycloak keycloak,
+                           @Value("${keycloak.realm}") String realmName,
+                           @Value("${keycloak.resource}") String clientId) {
         this.clientID = clientId;
         this.realmResource = keycloak.realm(realmName);
     }

@@ -12,6 +12,7 @@ import org.keycloak.admin.client.KeycloakBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -73,8 +74,8 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
      * Configure here the endpoints that need to be anonymously available
      */
     @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/public-hello-world");
+    public void configure(WebSecurity web) {
+        web.ignoring().antMatchers(HttpMethod.POST,"/members");
     }
 
     /**
