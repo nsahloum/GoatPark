@@ -10,7 +10,10 @@ import com.switchfully.goatpark.service.mapper.KeycloakMapper;
 import com.switchfully.goatpark.service.mapper.MemberMapper;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;

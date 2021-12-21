@@ -1,11 +1,14 @@
 package com.switchfully.goatpark.service.mapper;
 
+import com.switchfully.goatpark.domain.address.Address;
+import com.switchfully.goatpark.domain.address.PostalCode;
 import com.switchfully.goatpark.domain.person.Person;
+import com.switchfully.goatpark.domain.person.emailaddress.EmailAddress;
+import com.switchfully.goatpark.domain.person.membership.LicensePlate;
 import com.switchfully.goatpark.domain.person.membership.Membership;
+import com.switchfully.goatpark.domain.person.phonenumber.PhoneNumber;
 import com.switchfully.goatpark.service.dto.member.CreateMemberDto;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDate;
 
 @Component
 public class MemberMapper {
@@ -13,14 +16,31 @@ public class MemberMapper {
     public Person map(CreateMemberDto createMemberDto) {
         return new Person(
                 createMemberDto.getName(),
-                createMemberDto.getPhoneNumber(),
-                createMemberDto.getMobileNumber(),
-                createMemberDto.getEmailAddress(),
-                createMemberDto.getAddress(),
+                new PhoneNumber(
+                        createMemberDto.getPhoneNumber().getPrefix(),
+                        createMemberDto.getPhoneNumber().getNumber()
+                ),
+                new PhoneNumber(
+                        createMemberDto.getMobileNumber().getPrefix(),
+                        createMemberDto.getMobileNumber().getNumber()
+                ),
+                new EmailAddress(
+                        createMemberDto.getEmailAddress().getUsername(),
+                        createMemberDto.getEmailAddress().getDomain()
+                ),
+                new Address(
+                        createMemberDto.getCreateAddressDto().getStreetName(),
+                        createMemberDto.getCreateAddressDto().getStreetNumber(),
+                        new PostalCode(
+                                createMemberDto.getCreateAddressDto().getPostalCode().getCode(),
+                                createMemberDto.getCreateAddressDto().getPostalCode().getLabel()
+                        )),
                 new Membership(
-//                        // TODO: might have to adept this
-//                        LocalDate.now(),
-                        createMemberDto.getLicensePlate())
-                );
+                        new LicensePlate(
+                                createMemberDto.getLicensePlate().getNumberPlate(),
+                                createMemberDto.getLicensePlate().getCountryCode()
+                        )
+                )
+        );
     }
 }

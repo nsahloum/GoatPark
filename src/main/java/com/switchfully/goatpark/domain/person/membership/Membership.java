@@ -7,7 +7,7 @@ import java.time.LocalDate;
 @Table(name = "membership")
 public class Membership {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int membershipId;
 
     @Column(name = "registrationDate", columnDefinition = "DATE")

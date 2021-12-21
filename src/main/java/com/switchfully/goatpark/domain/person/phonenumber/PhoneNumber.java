@@ -6,8 +6,10 @@ import javax.persistence.*;
 @Table(name = "PHONENUMBER")
 public class PhoneNumber {
 
+    private static final int PREFIX_MAX_LENGTH = 4;
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "PREFIX")
@@ -16,7 +18,6 @@ public class PhoneNumber {
     @Column(name = "NUMBER")
     private String number;
 
-    private final int PREFIXMAXLENGHT = 4;
 
     public PhoneNumber(String prefix, String number) {
 
@@ -27,8 +28,20 @@ public class PhoneNumber {
     protected PhoneNumber() {
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
     private String checkValidPrefix(String prefix) {
-        if (prefix.length() > PREFIXMAXLENGHT) throw new IllegalArgumentException("Prefix is " + PREFIXMAXLENGHT + " digits maximum");
+        if (prefix.length() > PREFIX_MAX_LENGTH) throw new IllegalArgumentException("Prefix is " + PREFIX_MAX_LENGTH + " digits maximum");
         return prefix;
     }
 }

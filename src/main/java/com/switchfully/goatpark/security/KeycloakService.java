@@ -31,13 +31,14 @@ public class KeycloakService {
     public void addUser(KeycloakUserDTO keycloakUserDTO) {
         String createdUserId = createUser(keycloakUserDTO);
         getUser(createdUserId).resetPassword(createCredentialRepresentation(keycloakUserDTO.password()));
-        addRole(getUser(createdUserId), keycloakUserDTO.role().getLabel());
+        addRole(getUser(createdUserId), keycloakUserDTO.role().getLabel().toLowerCase());
     }
 
     private String createUser(KeycloakUserDTO keycloakUserDTO) {
         try {
             return CreatedResponseUtil.getCreatedId(createUser(keycloakUserDTO.userName()));
         } catch (WebApplicationException exception) {
+            System.out.println("GOTYA");
             throw new UserAlreadyExistsException(keycloakUserDTO.userName());
         }
     }

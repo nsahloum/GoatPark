@@ -24,6 +24,18 @@ public class PostalCode {
     protected PostalCode() {
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
     @Override
     public String toString() {
         return code + ", " + label;

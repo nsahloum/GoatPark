@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class EmailAddress {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "USERNAME")
@@ -28,6 +28,18 @@ public class EmailAddress {
     }
 
     protected EmailAddress() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getDomain() {
+        return domain;
     }
 
     public static boolean isValidEmail(String email) {
