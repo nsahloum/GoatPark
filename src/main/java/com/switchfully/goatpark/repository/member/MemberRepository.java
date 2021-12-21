@@ -16,7 +16,6 @@ public class MemberRepository {
 
 
     public Person registerMember(Person person) {
-
         manager.persist(person);
 
         String sql = "SELECT p FROM Person p WHERE p.name = :name";

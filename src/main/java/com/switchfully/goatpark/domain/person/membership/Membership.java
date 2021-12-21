@@ -8,12 +8,12 @@ import java.time.LocalDate;
 public class Membership {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int membershipId;
+    private int id;
 
-    @Column(name = "registrationDate", columnDefinition = "DATE")
+    @Column(name = "registration_date", columnDefinition = "DATE")
     private LocalDate registrationDate;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "fk_license_plate_id")
     private LicensePlate licensePlate;
 

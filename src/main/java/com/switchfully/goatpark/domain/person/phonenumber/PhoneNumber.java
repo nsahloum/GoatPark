@@ -3,7 +3,7 @@ package com.switchfully.goatpark.domain.person.phonenumber;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "PHONENUMBER")
+@Table(name = "PHONE_NUMBER")
 public class PhoneNumber {
 
     private static final int PREFIX_MAX_LENGTH = 4;

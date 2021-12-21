@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Entity
-@Table(name = "EMAILADDRESS")
+@Table(name = "EMAIL_ADDRESS")
 public class EmailAddress {
 
     @Id

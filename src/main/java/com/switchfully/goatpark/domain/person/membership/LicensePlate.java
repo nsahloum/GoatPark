@@ -7,12 +7,12 @@ import javax.persistence.*;
 public class LicensePlate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int licenseId;
+    private int id;
 
-    @Column(name = "numberPlate")
+    @Column(name = "number_plate")
     private String numberPlate;
 
-    @Column(name = "countryCode")
+    @Column(name = "country_code")
     private String countryCode;
 
     protected LicensePlate(){}
@@ -23,7 +23,7 @@ public class LicensePlate {
     }
 
     public int getLicenseId() {
-        return licenseId;
+        return id;
     }
 
     public String getNumberPlate() {

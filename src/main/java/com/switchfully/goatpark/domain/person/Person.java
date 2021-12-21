@@ -18,23 +18,23 @@ public class Person {
     @Column(name = "name")
     private String name;
 
-    @JoinColumn(name = "FK_PHONENUMBER")
-    @ManyToOne
+    @JoinColumn(name = "FK_PHONE_NUMBER")
+    @ManyToOne(cascade = {CascadeType.ALL})
     private PhoneNumber phoneNumber;
 
-    @JoinColumn(name = "FK_MOBILENUMBER")
-    @ManyToOne
+    @JoinColumn(name = "FK_MOBILE_NUMBER")
+    @ManyToOne(cascade = {CascadeType.ALL})
     private PhoneNumber mobileNumber;
 
-    @JoinColumn(name = "FK_EMAILADDRESS")
-    @OneToOne
+    @JoinColumn(name = "FK_EMAIL_ADDRESS")
+    @OneToOne(cascade = {CascadeType.ALL})
     private EmailAddress emailAddress;
 
     @JoinColumn(name = "FK_ADDRESS")
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Address address;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "fk_membership_id")
     private Membership membership;
 
