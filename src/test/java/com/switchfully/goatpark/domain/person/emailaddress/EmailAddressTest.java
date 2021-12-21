@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.domain.emailaddress;
+package com.switchfully.goatpark.domain.person.emailaddress;
 
 import org.junit.jupiter.api.Test;
 

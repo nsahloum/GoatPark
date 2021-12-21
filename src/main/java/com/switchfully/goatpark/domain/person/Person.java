@@ -1,7 +1,7 @@
 package com.switchfully.goatpark.domain.person;
 
 import com.switchfully.goatpark.domain.address.Address;
-import com.switchfully.goatpark.domain.emailaddress.EmailAddress;
+import com.switchfully.goatpark.domain.person.emailaddress.EmailAddress;
 import com.switchfully.goatpark.domain.person.phonenumber.PhoneNumber;
 
 import javax.persistence.*;
