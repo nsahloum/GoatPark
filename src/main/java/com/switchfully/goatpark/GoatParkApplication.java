@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.goatpark;
+package com.switchfully.goatpark;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
