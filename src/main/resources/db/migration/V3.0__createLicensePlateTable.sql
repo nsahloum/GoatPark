@@ -13,7 +13,7 @@ CREATE TABLE membership
 );
 
 ALTER TABLE person
-    ADD COLUMN fk_membership_id int REFERENCES membership (memberId);
+    ADD COLUMN fk_membership_id int REFERENCES membership (membershipId);
 
 ALTER TABLE person
-    ADD COLUMN role VARCHAR(10);
+    ADD COLUMN role VARCHAR(20);

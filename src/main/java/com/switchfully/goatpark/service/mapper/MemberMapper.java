@@ -18,8 +18,8 @@ public class MemberMapper {
                 createMemberDto.getEmailAddress(),
                 createMemberDto.getAddress(),
                 new Membership(
-                        // TODO: might have to adept this
-                        LocalDate.now(),
+//                        // TODO: might have to adept this
+//                        LocalDate.now(),
                         createMemberDto.getLicensePlate())
                 );
     }

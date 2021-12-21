@@ -6,11 +6,7 @@ import com.switchfully.goatpark.repository.division.DivisionRepository;
 import com.switchfully.goatpark.service.dto.division.CreateDivisionDto;
 import com.switchfully.goatpark.service.dto.division.DivisionDto;
 import com.switchfully.goatpark.service.mapper.DivisionMapper;
-import org.postgresql.util.PSQLException;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
-
-import java.sql.SQLException;
 
 @Service
 public class DivisionService {

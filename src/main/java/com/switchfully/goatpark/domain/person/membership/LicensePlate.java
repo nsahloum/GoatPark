@@ -8,8 +8,10 @@ public class LicensePlate {
     @Id
     @GeneratedValue
     private int licenseId;
+
     @Column(name = "numberPlate")
     private String numberPlate;
+
     @Column(name = "countryCode")
     private String countryCode;
 

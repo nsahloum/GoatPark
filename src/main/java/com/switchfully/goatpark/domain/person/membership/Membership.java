@@ -9,16 +9,18 @@ public class Membership {
     @Id
     @GeneratedValue
     private int membershipId;
+
     @Column(name = "registrationDate", columnDefinition = "DATE")
     private LocalDate registrationDate;
+
     @OneToOne
     @JoinColumn(name = "fk_license_plate_id")
     private LicensePlate licensePlate;
 
     protected Membership() {}
 
-    public Membership(LocalDate registrationDate, LicensePlate licensePlate) {
-        this.registrationDate = registrationDate;
+    public Membership(LicensePlate licensePlate) {
+        this.registrationDate = LocalDate.now();
         this.licensePlate = licensePlate;
     }
 
