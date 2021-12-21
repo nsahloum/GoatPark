@@ -23,4 +23,9 @@ public class PostalCode {
 
     public PostalCode() {
     }
+
+    @Override
+    public String toString() {
+        return code + ", " + label;
+    }
 }

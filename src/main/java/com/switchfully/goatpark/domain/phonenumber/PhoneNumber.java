@@ -17,10 +17,16 @@ public class PhoneNumber {
     private String number;
 
     public PhoneNumber(String prefix, String number) {
-        this.prefix = prefix;
+
+        this.prefix = checkValidPrefix(prefix);
         this.number = number;
     }
 
     public PhoneNumber() {
+    }
+
+    private String checkValidPrefix(String prefix) {
+        if (prefix.length() > 4) throw new IllegalArgumentException("Prefix is 4 digits maximum");
+        return prefix;
     }
 }

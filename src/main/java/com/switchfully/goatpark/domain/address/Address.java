@@ -29,4 +29,16 @@ public class Address {
 
     public Address() {
     }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public PostalCode getPostalCode() {
+        return postalCode;
+    }
 }

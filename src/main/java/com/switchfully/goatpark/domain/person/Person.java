@@ -18,15 +18,19 @@ public class Person {
     private String name;
 
     @JoinColumn(name = "FK_PHONENUMBER")
+    @ManyToOne
     private PhoneNumber phoneNumber;
 
     @JoinColumn(name = "FK_MOBILENUMBER")
+    @ManyToOne
     private PhoneNumber mobileNumber;
 
     @JoinColumn(name = "FK_EMAILADDRESS")
+    @OneToOne
     private EmailAddress emailAddress;
 
     @JoinColumn(name = "FK_ADDRESS")
+    @ManyToOne
     private Address address;
 
     public Person(String name, PhoneNumber phoneNumber, PhoneNumber mobileNumber, EmailAddress emailAddress, Address address) {
