@@ -2,9 +2,8 @@ package com.switchfully.goatpark.domain.phonenumber;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.util.Assert;
+
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PhoneNumberTest {
 

@@ -8,7 +8,7 @@ public class PostalCode {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private int id;
 
     @Column(name = "code")
     private String code;
@@ -21,7 +21,7 @@ public class PostalCode {
         this.label = label;
     }
 
-    public PostalCode() {
+    protected PostalCode() {
     }
 
     @Override

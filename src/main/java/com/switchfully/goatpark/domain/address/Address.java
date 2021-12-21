@@ -1,6 +1,5 @@
 package com.switchfully.goatpark.domain.address;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
 
 @Entity
@@ -9,7 +8,7 @@ public class Address {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private int id;
 
     @Column(name = "streetName")
     private String streetName;
@@ -27,7 +26,7 @@ public class Address {
         this.postalCode = postalCode;
     }
 
-    public Address() {
+    protected Address() {
     }
 
     public String getStreetName() {

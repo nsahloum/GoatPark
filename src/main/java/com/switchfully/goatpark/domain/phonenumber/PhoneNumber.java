@@ -8,7 +8,7 @@ public class PhoneNumber {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private int id;
 
     @Column(name = "PREFIX")
     private String prefix;
@@ -16,17 +16,19 @@ public class PhoneNumber {
     @Column(name = "NUMBER")
     private String number;
 
+    private final int PREFIXMAXLENGHT = 4;
+
     public PhoneNumber(String prefix, String number) {
 
         this.prefix = checkValidPrefix(prefix);
         this.number = number;
     }
 
-    public PhoneNumber() {
+    protected PhoneNumber() {
     }
 
     private String checkValidPrefix(String prefix) {
-        if (prefix.length() > 4) throw new IllegalArgumentException("Prefix is 4 digits maximum");
+        if (prefix.length() > PREFIXMAXLENGHT) throw new IllegalArgumentException("Prefix is " + PREFIXMAXLENGHT + " digits maximum");
         return prefix;
     }
 }

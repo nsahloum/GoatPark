@@ -12,7 +12,7 @@ public class Person {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -41,6 +41,6 @@ public class Person {
         this.address = address;
     }
 
-    public Person() {
+    protected Person() {
     }
 }

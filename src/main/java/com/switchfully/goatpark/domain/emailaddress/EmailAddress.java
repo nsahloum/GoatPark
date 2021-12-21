@@ -10,7 +10,7 @@ public class EmailAddress {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private int id;
 
     @Column(name = "USERNAME")
     private String username;
@@ -27,7 +27,7 @@ public class EmailAddress {
         this.domain = domain;
     }
 
-    public EmailAddress() {
+    protected EmailAddress() {
     }
 
     public static boolean isValidEmail(String email) {
