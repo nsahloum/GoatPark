@@ -3,7 +3,7 @@ package com.switchfully.goatpark.service.dto.division;
 public class DivisionDto {
 
     private int id;
-    
+
     private String name;
 
     private String originalName;
