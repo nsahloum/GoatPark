@@ -8,7 +8,20 @@ import org.springframework.stereotype.Component;
 public class DivisionMapper {
 
     public Division mapCreateDivisionDtoToDivision (CreateDivisionDto createDivisionDto) {
-        return new Division(createDivisionDto.getName(), createDivisionDto.getOriginalName(), createDivisionDto.getDirector());
+        return new Division(
+                createDivisionDto.getName(),
+                createDivisionDto.getOriginalName(),
+                createDivisionDto.getDirector()
+        );
     }
+
+    public DivisionDto mapDivisionToDivisionDto (Division division){
+        return new DivisionDto()
+                .setDirector(division.getDirector())
+                .setId(division.getId())
+                .setName(division.getName())
+                .setOriginalName(division.getOriginalName());
+    }
+
 
 }
