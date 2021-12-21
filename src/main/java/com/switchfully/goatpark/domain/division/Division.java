@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.domain;
+package com.switchfully.goatpark.domain.division;
 
 import javax.persistence.*;
 import java.util.UUID;
