@@ -1,6 +1,4 @@
-package com.switchfully.goatpark.service.dto.member;
-
-import com.switchfully.goatpark.domain.address.PostalCode;
+package com.switchfully.goatpark.service.dto.member.create;
 
 public class CreateAddressDto {
 

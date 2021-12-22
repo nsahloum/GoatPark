@@ -7,7 +7,8 @@ import com.switchfully.goatpark.domain.person.emailaddress.EmailAddress;
 import com.switchfully.goatpark.domain.person.membership.LicensePlate;
 import com.switchfully.goatpark.domain.person.membership.Membership;
 import com.switchfully.goatpark.domain.person.phonenumber.PhoneNumber;
-import com.switchfully.goatpark.service.dto.member.CreateMemberDto;
+import com.switchfully.goatpark.service.dto.member.create.CreateMemberDto;
+import com.switchfully.goatpark.service.dto.member.returndto.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -42,5 +43,35 @@ public class MemberMapper {
                         )
                 )
         );
+    }
+
+    public PersonDto map(Person person) {
+        return new PersonDto.PersonDtoBuilder()
+                .withId(person.getId())
+                .withName(person.getName())
+                .withPhoneNumberDto(
+                        new PhoneNumberDto(
+                                person.getId(),
+                                person.getPhoneNumber().getPrefix(),
+                                person.getPhoneNumber().getNumber()))
+                .withMobileNumber(
+                        new PhoneNumberDto(
+                                person.getId(),
+                                person.getMobileNumber().getPrefix(),
+                                person.getMobileNumber().getNumber()))
+                .withEmailAddressDto(
+                        new EmailAdresDto(
+                                person.getEmailAddress().getId(),
+                                person.getEmailAddress().getUsername(),
+                                person.getEmailAddress().getDomain()))
+                .withAddressDto(
+                        new AddressDto(
+                                person.getAddress().getId(),
+                                person.getAddress().getStreetName(),
+                                person.getAddress().getStreetNumber(),
+                                new PostalCode(
+                                        person.getAddress().getPostalCode().getCode(),
+                                        person.getAddress().getPostalCode().getLabel())))
+                .build();
     }
 }

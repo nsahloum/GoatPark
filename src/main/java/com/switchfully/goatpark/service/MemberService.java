@@ -5,7 +5,8 @@ import com.switchfully.goatpark.repository.member.MemberRepository;
 import com.switchfully.goatpark.security.KeycloakService;
 import com.switchfully.goatpark.security.KeycloakUserDTO;
 import com.switchfully.goatpark.security.Role;
-import com.switchfully.goatpark.service.dto.member.CreateMemberDto;
+import com.switchfully.goatpark.service.dto.member.create.CreateMemberDto;
+import com.switchfully.goatpark.service.dto.member.returndto.PersonDto;
 import com.switchfully.goatpark.service.mapper.KeycloakMapper;
 import com.switchfully.goatpark.service.mapper.MemberMapper;
 import org.springframework.stereotype.Service;
@@ -28,10 +29,10 @@ public class MemberService {
         this.keycloakMapper = keycloakMapper;
     }
 
-    public int registerMember(CreateMemberDto createMemberDto) {
+    public PersonDto registerMember(CreateMemberDto createMemberDto) {
         KeycloakUserDTO keycloakUserDTO = keycloakMapper.map(createMemberDto, Role.MEMBER);
         keycloakService.addUser(keycloakUserDTO);
         Person person = memberMapper.map(createMemberDto);
-        return memberRepository.registerMember(person).getId();
+        return memberMapper.map(memberRepository.registerMember(person));
     }
 }
