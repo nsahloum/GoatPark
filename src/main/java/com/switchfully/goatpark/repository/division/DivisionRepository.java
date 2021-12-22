@@ -1,14 +1,41 @@
 package com.switchfully.goatpark.repository.division;
 
 import com.switchfully.goatpark.domain.division.Division;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-@EnableJpaRepositories
-public interface DivisionRepository extends JpaRepository<Division, Integer> {
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
-    public Division save(Division divisionToSave);
+@Repository
+public class DivisionRepository {
 
-    public Division findDivisionByName(String name);
-    public Division findDivisionByOriginalName(String originalName);
+    @PersistenceContext
+    EntityManager entityManager;
+
+    @Transactional
+    public Division save(Division divisionToSave) {
+        entityManager.persist(divisionToSave);
+        return divisionToSave;
+    }
+
+    public String findDivisionByName(String name) {
+        Division division = entityManager.createQuery("select d from Division d where d.name = :name", Division.class)
+                .setParameter("name", name)
+                .getSingleResult();
+        if(division != null){
+            return division.getName();
+        }
+        return null;
+    }
+
+    public String findDivisionByOriginalName(String originalName) {
+        Division division = entityManager.createQuery("select d from Division d where d.originalName = :originalName", Division.class)
+                .setParameter("originalName", originalName)
+                .getSingleResult();
+        if(division != null){
+            return division.getName();
+        }
+        return null;
+    }
 }
