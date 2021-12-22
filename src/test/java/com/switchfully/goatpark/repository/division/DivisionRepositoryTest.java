@@ -21,10 +21,11 @@ class DivisionRepositoryTest {
     private Division saved;
 
     @BeforeAll
-    public void setUp(){
+    public void setUp() {
         division = new Division("Division Name", "Original name", "Najima");
         saved = divisionRepository.save(division);
     }
+
     @Test
     public void saveDivision() {
         assertThat(saved).usingRecursiveComparison().ignoringFields("id").isEqualTo(division);
