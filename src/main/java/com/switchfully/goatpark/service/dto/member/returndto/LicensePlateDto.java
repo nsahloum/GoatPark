@@ -12,7 +12,7 @@ public class LicensePlateDto {
         this.countryCode = countryCode;
     }
 
-    public int getLicenseId() {
+    public int getId() {
         return id;
     }
 

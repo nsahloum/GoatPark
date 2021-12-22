@@ -20,4 +20,8 @@ public class EmailAdresDto {
     public String getUsername() {
         return username;
     }
+
+    public String getDomain() {
+        return domain;
+    }
 }
