@@ -1,6 +1,6 @@
 package com.switchfully.goatpark.service.division;
 
-import com.switchfully.goatpark.domain.division.Division;
+import com.switchfully.goatpark.service.domain.division.Division;
 import com.switchfully.goatpark.exception.NotUniqueException;
 import com.switchfully.goatpark.repository.division.DivisionRepository;
 import com.switchfully.goatpark.service.dto.division.CreateDivisionDto;

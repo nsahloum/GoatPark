@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.domain.person.emailaddress;
+package com.switchfully.goatpark.service.domain.person.emailaddress;
 
 import javax.persistence.*;
 import java.util.regex.Matcher;
@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class EmailAddress {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "email_address_seq")
     private int id;
 
     @Column(name = "USERNAME")
@@ -21,7 +21,8 @@ public class EmailAddress {
     private static final String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
     public EmailAddress(String username, String domain) {
-        if(!isValidEmail(username + "@" + domain)) { throw new IllegalArgumentException("This email address is not valid!");
+        if(!isValidEmail(username + "@" + domain)) {
+            throw new IllegalArgumentException("This email address is not valid!");
         }
         this.username = username;
         this.domain = domain;

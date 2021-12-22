@@ -1,7 +1,5 @@
 package com.switchfully.goatpark.service.dto.member.returndto;
 
-import com.switchfully.goatpark.domain.person.membership.LicensePlate;
-
 import java.time.LocalDate;
 
 public class MembershipDto {

@@ -1,6 +1,6 @@
 package com.switchfully.goatpark.service;
 
-import com.switchfully.goatpark.domain.person.Person;
+import com.switchfully.goatpark.service.domain.person.Person;
 import com.switchfully.goatpark.repository.member.MemberRepository;
 import com.switchfully.goatpark.security.KeycloakService;
 import com.switchfully.goatpark.security.KeycloakUserDTO;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 @Service
-@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;

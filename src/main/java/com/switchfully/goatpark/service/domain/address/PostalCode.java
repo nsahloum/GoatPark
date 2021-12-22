@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.domain.address;
+package com.switchfully.goatpark.service.domain.address;
 
 import javax.persistence.*;
 
@@ -7,12 +7,10 @@ import javax.persistence.*;
 public class PostalCode {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "postal_code_seq")
     private int id;
-
     @Column(name = "code")
     private String code;
-
     @Column(name = "label")
     private String label;
 

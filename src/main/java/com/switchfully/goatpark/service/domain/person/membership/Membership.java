@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.domain.person.membership;
+package com.switchfully.goatpark.service.domain.person.membership;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -7,7 +7,7 @@ import java.time.LocalDate;
 @Table(name = "membership")
 public class Membership {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "membership_seq")
     private int id;
 
     @Column(name = "registration_date", columnDefinition = "DATE")

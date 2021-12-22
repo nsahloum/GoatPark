@@ -8,16 +8,16 @@ public class PersonDto {
     private final PhoneNumberDto mobileNumber;
     private final EmailAdresDto emailAdresDto;
     private final AddressDto addressDto;
-//    private final MembershipDto membershipDto;
+    private final MembershipDto membershipDto;
 
-    private PersonDto(int id, String name, PhoneNumberDto phoneNumberDto, PhoneNumberDto mobileNumber, EmailAdresDto emailAdresDto, AddressDto addressDto) {
+    private PersonDto(int id, String name, PhoneNumberDto phoneNumberDto, PhoneNumberDto mobileNumber, EmailAdresDto emailAdresDto, AddressDto addressDto, MembershipDto membershipDto) {
         this.id = id;
         this.name = name;
         this.phoneNumberDto = phoneNumberDto;
         this.mobileNumber = mobileNumber;
         this.emailAdresDto = emailAdresDto;
         this.addressDto = addressDto;
-//        this.membershipDto = membershipDto;
+        this.membershipDto = membershipDto;
     }
 
     public int getId() {
@@ -83,13 +83,13 @@ public class PersonDto {
             return this;
         }
 
-//        public PersonDtoBuilder withMembershipDto(MembershipDto membershipDto) {
-//            this.membershipDto = membershipDto;
-//            return this;
-//        }
+        public PersonDtoBuilder withMembershipDto(MembershipDto membershipDto) {
+            this.membershipDto = membershipDto;
+            return this;
+        }
 
         public PersonDto build() {
-            return new PersonDto(id, name, phoneNumberDto, mobileNumber,emailAdresDto, addressDto);
+            return new PersonDto(id, name, phoneNumberDto, mobileNumber,emailAdresDto, addressDto, membershipDto);
         }
     }
 }

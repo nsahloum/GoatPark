@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.domain.address;
+package com.switchfully.goatpark.service.domain.address;
 
 import javax.persistence.*;
 
@@ -7,15 +7,12 @@ import javax.persistence.*;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "address_seq")
     private int id;
-
     @Column(name = "street_name")
     private String streetName;
-
     @Column(name = "street_number")
     private String streetNumber;
-
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "FK_POSTAL_CODE")
     private PostalCode postalCode;

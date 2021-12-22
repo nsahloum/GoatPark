@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.domain.person.phonenumber;
+package com.switchfully.goatpark.service.domain.person.phonenumber;
 
 import javax.persistence.*;
 
@@ -9,7 +9,7 @@ public class PhoneNumber {
     private static final int PREFIX_MAX_LENGTH = 4;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "phone_number_seq")
     private int id;
 
     @Column(name = "PREFIX")
