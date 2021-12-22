@@ -1,11 +1,10 @@
 package com.switchfully.goatpark.api;
 
 import com.switchfully.goatpark.service.MemberService;
-import com.switchfully.goatpark.service.dto.member.CreateMemberDto;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.switchfully.goatpark.service.dto.member.create.CreateMemberDto;
+import com.switchfully.goatpark.service.dto.member.returndto.PersonDto;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/members", consumes = "application/json")
@@ -17,9 +16,9 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-
     @PostMapping
-    public int register(@RequestBody CreateMemberDto createMemberDto) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public PersonDto register(@RequestBody CreateMemberDto createMemberDto) {
         return memberService.registerMember(createMemberDto);
     }
 }
