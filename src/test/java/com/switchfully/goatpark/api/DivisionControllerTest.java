@@ -22,8 +22,6 @@ class DivisionControllerTest {
 
     @Test
     void endToEnd_saveDivision() {
-        String token;
-        int responseCode;
         String url = "https://keycloak.switchfully.com/auth/realms/java-oct-2021/protocol/openid-connect/token";
 
         String response = RestAssured
