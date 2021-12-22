@@ -7,13 +7,12 @@ CREATE TABLE license_plate
 
 CREATE TABLE membership
 (
-    id                  serial PRIMARY KEY                NOT NULL,
-    registration_date   DATE                              NOT NULL,
-    fk_license_plate_id INT REFERENCES license_plate (id) NOT NULL
+    id                  serial PRIMARY KEY NOT NULL,
+    registration_date   DATE               NOT NULL,
+    fk_license_plate_id INT                NOT NULL,
+    CONSTRAINT fk_membership_license_plate_id foreign key (fk_license_plate_id) REFERENCES license_plate (id)
 );
 
 ALTER TABLE person
-    ADD COLUMN fk_membership_id int REFERENCES membership (id);
-
-ALTER TABLE person
-    ADD COLUMN role VARCHAR(20);
+    ADD COLUMN fk_membership_id int,
+    ADD CONSTRAINT fk_person_membership_id foreign key (fk_membership_id) REFERENCES membership(id);
