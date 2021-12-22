@@ -23,7 +23,7 @@ public class ParkingLot {
     private int maximumCapacity;
 
     @JoinColumn(name = "fk_person_id")
-    @OneToOne //ask the client
+    @ManyToOne
     private Person contactPerson;
 
     @JoinColumn(name = "fk_address_id")
