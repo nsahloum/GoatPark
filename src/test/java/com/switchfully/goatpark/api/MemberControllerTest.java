@@ -1,26 +1,33 @@
 package com.switchfully.goatpark.api;
 
+import com.switchfully.goatpark.security.KeycloakService;
 import com.switchfully.goatpark.service.dto.member.create.*;
 import com.switchfully.goatpark.service.dto.member.returndto.PersonDto;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
+import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
+import org.springframework.test.context.ActiveProfiles;
 
 import static io.restassured.http.ContentType.JSON;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Disabled
+@ActiveProfiles("test")
+//@Disabled
 // We can run it once, then we need to delete the user in KeyCloak, otherwise it will start failing
 class MemberControllerTest {
 
     @LocalServerPort
     private int port;
+    @Autowired
+    private KeycloakService keycloakService;
 
     @Test
     void endToEnd_registerMember() {
@@ -36,6 +43,7 @@ class MemberControllerTest {
 
         RestAssured.defaultParser = Parser.JSON;
 
+
         PersonDto personDto = RestAssured
                 .given()
                 .body(createMemberDto)
@@ -50,6 +58,7 @@ class MemberControllerTest {
                 .extract()
                 .as(PersonDto.class);
 
+        keycloakService.deleteUser(personDto.getKeycloakId());
         assertThat(personDto.getId()).isNotZero();
         assertThat(personDto.getName()).isEqualTo("name");
     }

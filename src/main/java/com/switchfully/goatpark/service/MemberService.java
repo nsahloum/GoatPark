@@ -11,8 +11,6 @@ import com.switchfully.goatpark.service.mapper.KeycloakMapper;
 import com.switchfully.goatpark.service.mapper.MemberMapper;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-
 @Service
 public class MemberService {
 
@@ -29,9 +27,13 @@ public class MemberService {
     }
 
     public PersonDto registerMember(CreateMemberDto createMemberDto) {
-        KeycloakUserDTO keycloakUserDTO = keycloakMapper.map(createMemberDto, Role.MEMBER);
-        keycloakService.addUser(keycloakUserDTO);
+        String keycloakId = addPersonToKeycloak(createMemberDto);
         Person person = memberMapper.map(createMemberDto);
-        return memberMapper.map(memberRepository.registerMember(person));
+        return memberMapper.map(memberRepository.registerMember(person), keycloakId);
+    }
+
+    private String addPersonToKeycloak(CreateMemberDto createMemberDto) {
+        KeycloakUserDTO keycloakUserDTO = keycloakMapper.map(createMemberDto, Role.MEMBER);
+        return keycloakService.addUser(keycloakUserDTO);
     }
 }

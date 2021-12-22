@@ -45,10 +45,11 @@ public class MemberMapper {
         );
     }
 
-    public PersonDto map(Person person) {
+    public PersonDto map(Person person, String keycloackId) {
         return new PersonDto.PersonDtoBuilder()
                 .withId(person.getId())
                 .withName(person.getName())
+                .withKeycloakId(keycloackId)
                 .withPhoneNumberDto(
                         new PhoneNumberDto(
                                 person.getId(),
