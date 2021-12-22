@@ -10,7 +10,11 @@ public class CreateDivisionDto {
 
     private String director;
 
-
+    public CreateDivisionDto(String name, String originalName, String director) {
+        this.name = name;
+        this.originalName = originalName;
+        this.director = director;
+    }
 
     public String getName() {
         return name;
