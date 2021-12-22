@@ -1,9 +1,8 @@
 package com.switchfully.goatpark.api;
 
-import com.switchfully.goatpark.domain.person.Person;
 import com.switchfully.goatpark.service.MemberService;
+import com.switchfully.goatpark.service.domain.person.Person;
 import com.switchfully.goatpark.service.dto.member.create.CreateMemberDto;
-import com.switchfully.goatpark.service.dto.member.returndto.MembershipDto;
 import com.switchfully.goatpark.service.dto.member.returndto.PersonDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
