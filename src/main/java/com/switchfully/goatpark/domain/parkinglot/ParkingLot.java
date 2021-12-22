@@ -3,13 +3,38 @@ package com.switchfully.goatpark.domain.parkinglot;
 import com.switchfully.goatpark.domain.address.Address;
 import com.switchfully.goatpark.domain.person.Person;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "parking_lot")
 public class ParkingLot {
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "category")
+    @Enumerated(EnumType.STRING)
     private Category category;
+
+    @Column(name = "maximum_capacity")
     private int maximumCapacity;
+
+    @JoinColumn(name = "fk_person_id")
+    @OneToOne //ask the client
     private Person contactPerson;
+
+    @JoinColumn(name = "fk_address_id")
+    @OneToOne
     private Address address;
+
+    @Column(name = "price_per_hour")
     private double pricePerHour;
+
+    private ParkingLot() {
+    }
 
     private ParkingLot(ParkingLotBuilder parkingLotBuilder) {
         this.name = parkingLotBuilder.name;
@@ -44,7 +69,7 @@ public class ParkingLot {
         return pricePerHour;
     }
 
-    public static class ParkingLotBuilder{
+    public static class ParkingLotBuilder {
         private String name;
         private Category category;
         private int maximumCapacity;
@@ -52,13 +77,16 @@ public class ParkingLot {
         private Address address;
         private double pricePerHour;
 
-        private ParkingLotBuilder(){}
+        private ParkingLotBuilder() {
+        }
 
-        public static ParkingLotBuilder parkingLotBuilder () {
+        public static ParkingLotBuilder parkingLotBuilder() {
             return new ParkingLotBuilder();
         }
 
-        public ParkingLot build() {return new ParkingLot(this);}
+        public ParkingLot build() {
+            return new ParkingLot(this);
+        }
 
         public ParkingLotBuilder withName(String name) {
             this.name = name;
