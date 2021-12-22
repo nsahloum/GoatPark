@@ -4,9 +4,11 @@ import com.switchfully.goatpark.domain.person.Person;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.*;
 
 @Repository
+@Transactional
 public class MemberRepository {
 
     private final EntityManager manager;

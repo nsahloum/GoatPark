@@ -1,12 +1,11 @@
 package com.switchfully.goatpark.repository.division;
 
-import com.switchfully.goatpark.domain.division.Division;
+import com.switchfully.goatpark.service.domain.division.Division;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 @Repository
 public class DivisionRepository {

@@ -1,6 +1,6 @@
 package com.switchfully.goatpark.service;
 
-import com.switchfully.goatpark.domain.person.Person;
+import com.switchfully.goatpark.service.domain.person.Person;
 import com.switchfully.goatpark.repository.member.MemberRepository;
 import com.switchfully.goatpark.security.KeycloakService;
 import com.switchfully.goatpark.security.KeycloakUserDTO;
@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;

@@ -1,9 +1,9 @@
-package com.switchfully.goatpark.domain.person;
+package com.switchfully.goatpark.service.domain.person;
 
-import com.switchfully.goatpark.domain.address.Address;
-import com.switchfully.goatpark.domain.person.emailaddress.EmailAddress;
-import com.switchfully.goatpark.domain.person.membership.Membership;
-import com.switchfully.goatpark.domain.person.phonenumber.PhoneNumber;
+import com.switchfully.goatpark.service.domain.address.Address;
+import com.switchfully.goatpark.service.domain.person.emailaddress.EmailAddress;
+import com.switchfully.goatpark.service.domain.person.membership.Membership;
+import com.switchfully.goatpark.service.domain.person.phonenumber.PhoneNumber;
 
 import javax.persistence.*;
 
@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "person_seq")
     private int id;
 
     @Column(name = "name")
