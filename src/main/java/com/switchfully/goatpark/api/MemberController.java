@@ -13,7 +13,7 @@ import java.util.*;
 
 
 @RestController
-@RequestMapping(path = "/members", consumes = "application/json")
+@RequestMapping(path = "/members")
 public class MemberController {
 
     private final MemberService memberService;
@@ -22,13 +22,13 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    @PostMapping(produces = "application/json")
+    @PostMapping(produces = "application/json", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public PersonDto register(@RequestBody CreateMemberDto createMemberDto) {
         return memberService.registerMember(createMemberDto);
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = "application/json" )
     @PreAuthorize("hasAnyAuthority('GET_ALL_MEMBERS')")
     @ResponseStatus(HttpStatus.OK)
     public List<Person> getAllMembers() {
