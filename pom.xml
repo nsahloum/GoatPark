@@ -85,6 +85,12 @@
             <artifactId>keycloak-admin-client</artifactId>
             <version>13.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.200</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 
