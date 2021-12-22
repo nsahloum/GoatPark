@@ -7,18 +7,21 @@ import javax.persistence.*;
 public class Address {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "streetName")
+    @Column(name = "street_name")
     private String streetName;
 
-    @Column(name = "streetNumber")
+    @Column(name = "street_number")
     private String streetNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "FK_POSTALCODE")
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "FK_POSTAL_CODE")
     private PostalCode postalCode;
+
+    protected Address() {
+    }
 
     public Address(String streetName, String streetNumber, PostalCode postalCode) {
         this.streetName = streetName;
@@ -26,7 +29,8 @@ public class Address {
         this.postalCode = postalCode;
     }
 
-    protected Address() {
+    public int getId() {
+        return id;
     }
 
     public String getStreetName() {

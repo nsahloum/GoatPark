@@ -1,15 +1,15 @@
-package com.switchfully.goatpark.domain.emailaddress;
+package com.switchfully.goatpark.domain.person.emailaddress;
 
 import javax.persistence.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Entity
-@Table(name = "EMAILADDRESS")
+@Table(name = "EMAIL_ADDRESS")
 public class EmailAddress {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "USERNAME")
@@ -28,6 +28,18 @@ public class EmailAddress {
     }
 
     protected EmailAddress() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getDomain() {
+        return domain;
     }
 
     public static boolean isValidEmail(String email) {

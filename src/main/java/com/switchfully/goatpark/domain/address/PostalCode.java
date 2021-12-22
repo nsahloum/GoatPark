@@ -3,11 +3,11 @@ package com.switchfully.goatpark.domain.address;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "POSTALCODE")
+@Table(name = "POSTAL_CODE")
 public class PostalCode {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "code")
@@ -22,6 +22,18 @@ public class PostalCode {
     }
 
     protected PostalCode() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getLabel() {
+        return label;
     }
 
     @Override

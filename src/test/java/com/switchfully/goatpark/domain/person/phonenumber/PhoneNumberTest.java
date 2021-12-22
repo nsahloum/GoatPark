@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.domain.phonenumber;
+package com.switchfully.goatpark.domain.person.phonenumber;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

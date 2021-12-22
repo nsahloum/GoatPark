@@ -21,7 +21,9 @@ public class KeycloakService {
     private final RealmResource realmResource;
     private final String clientID;
 
-    public KeycloakService(Keycloak keycloak, @Value("${keycloak.realm}") String realmName, @Value("${keycloak.resource}") String clientId) {
+    public KeycloakService(Keycloak keycloak,
+                           @Value("${keycloak.realm}") String realmName,
+                           @Value("${keycloak.resource}") String clientId) {
         this.clientID = clientId;
         this.realmResource = keycloak.realm(realmName);
     }
@@ -29,13 +31,14 @@ public class KeycloakService {
     public void addUser(KeycloakUserDTO keycloakUserDTO) {
         String createdUserId = createUser(keycloakUserDTO);
         getUser(createdUserId).resetPassword(createCredentialRepresentation(keycloakUserDTO.password()));
-        addRole(getUser(createdUserId), keycloakUserDTO.role().getLabel());
+        addRole(getUser(createdUserId), keycloakUserDTO.role().getLabel().toLowerCase());
     }
 
     private String createUser(KeycloakUserDTO keycloakUserDTO) {
         try {
             return CreatedResponseUtil.getCreatedId(createUser(keycloakUserDTO.userName()));
         } catch (WebApplicationException exception) {
+            System.out.println("GOTYA");
             throw new UserAlreadyExistsException(keycloakUserDTO.userName());
         }
     }
