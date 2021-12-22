@@ -4,12 +4,11 @@ import com.google.common.collect.Lists;
 
 import java.util.List;
 
-import static com.switchfully.goatpark.security.Feature.CREATE_DIVISION;
-import static com.switchfully.goatpark.security.Feature.GET_CUSTOMER_HELLO_WORLD;
+import static com.switchfully.goatpark.security.Feature.*;
 
 public enum Role {
     // replace nulls with features
-    MANAGER("manager", GET_CUSTOMER_HELLO_WORLD, CREATE_DIVISION),
+    MANAGER("manager", GET_CUSTOMER_HELLO_WORLD, CREATE_DIVISION, GET_ALL_MEMBERS),
     MEMBER("member", GET_CUSTOMER_HELLO_WORLD);
 
     private final String label;

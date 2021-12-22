@@ -4,6 +4,7 @@ import com.switchfully.goatpark.domain.person.Person;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.util.*;
 
 @Repository
 public class MemberRepository {
@@ -25,5 +26,10 @@ public class MemberRepository {
                 .getSingleResult();
 
         return manager.find(Person.class, result.getId());
+    }
+
+    public List<Person> getAllMembers() {
+        String sql = "SELECT p FROM Person p WHERE p.membership IS NULL";
+        return manager.createQuery(sql, Person.class).getResultList();
     }
 }
