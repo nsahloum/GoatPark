@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 public class DivisionRepository {
@@ -19,23 +20,17 @@ public class DivisionRepository {
         return divisionToSave;
     }
 
-    public String findDivisionByName(String name) {
-        Division division = entityManager.createQuery("select d from Division d where d.name = :name", Division.class)
+    public Division findDivisionByName(String name) {
+        return entityManager.createQuery("select d from Division d where d.name = :name", Division.class)
                 .setParameter("name", name)
-                .getSingleResult();
-        if(division != null){
-            return division.getName();
-        }
-        return null;
+                .getResultList().stream().findFirst().orElse(null);
+
     }
 
-    public String findDivisionByOriginalName(String originalName) {
-        Division division = entityManager.createQuery("select d from Division d where d.originalName = :originalName", Division.class)
+    public Division findDivisionByOriginalName(String originalName) {
+        return entityManager.createQuery("select d from Division d where d.originalName = :originalName", Division.class)
                 .setParameter("originalName", originalName)
-                .getSingleResult();
-        if(division != null){
-            return division.getName();
-        }
-        return null;
+                .getResultList().stream().findFirst().orElse(null);
+
     }
 }
