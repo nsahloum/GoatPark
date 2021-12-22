@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.domain.person.membership;
+package com.switchfully.goatpark.service.domain.person.membership;
 
 import javax.persistence.*;
 
@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "license_plate")
 public class LicensePlate {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "license_plate_seq")
     private int id;
 
     @Column(name = "number_plate")

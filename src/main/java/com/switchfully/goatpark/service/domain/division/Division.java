@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.domain.division;
+package com.switchfully.goatpark.service.domain.division;
 
 import javax.persistence.*;
 

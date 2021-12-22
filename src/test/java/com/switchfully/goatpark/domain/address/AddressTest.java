@@ -1,5 +1,7 @@
 package com.switchfully.goatpark.domain.address;
 
+import com.switchfully.goatpark.service.domain.address.Address;
+import com.switchfully.goatpark.service.domain.address.PostalCode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

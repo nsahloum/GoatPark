@@ -1,15 +1,15 @@
 package com.switchfully.goatpark.service.dto.member.returndto;
 
-import com.switchfully.goatpark.domain.address.PostalCode;
+import com.switchfully.goatpark.service.domain.address.PostalCode;
 
 public class AddressDto {
 
     private final int id;
     private final String streetName;
     private final String streetNumber;
-    private final PostalCode postalCode;
+    private final PostalCodeDto postalCode;
 
-    public AddressDto(int id, String streetName, String streetNumber, PostalCode postalCode) {
+    public AddressDto(int id, String streetName, String streetNumber, PostalCodeDto postalCode) {
         this.id = id;
         this.streetName = streetName;
         this.streetNumber = streetNumber;
@@ -28,7 +28,7 @@ public class AddressDto {
         return streetNumber;
     }
 
-    public PostalCode getPostalCode() {
+    public PostalCodeDto getPostalCode() {
         return postalCode;
     }
 }

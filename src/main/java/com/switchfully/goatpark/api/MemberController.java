@@ -16,7 +16,7 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    @PostMapping(produces = "application/json", consumes = "application/json")
+    @PostMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public PersonDto register(@RequestBody CreateMemberDto createMemberDto) {
         return memberService.registerMember(createMemberDto);

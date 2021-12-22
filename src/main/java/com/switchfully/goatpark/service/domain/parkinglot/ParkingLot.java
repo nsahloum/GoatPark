@@ -1,7 +1,7 @@
-package com.switchfully.goatpark.domain.parkinglot;
+package com.switchfully.goatpark.service.domain.parkinglot;
 
-import com.switchfully.goatpark.domain.address.Address;
-import com.switchfully.goatpark.domain.person.Person;
+import com.switchfully.goatpark.service.domain.address.Address;
+import com.switchfully.goatpark.service.domain.person.Person;
 
 import javax.persistence.*;
 
