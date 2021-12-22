@@ -11,6 +11,10 @@ import com.switchfully.goatpark.service.mapper.KeycloakMapper;
 import com.switchfully.goatpark.service.mapper.MemberMapper;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class MemberService {
 
@@ -35,5 +39,11 @@ public class MemberService {
     private String addPersonToKeycloak(CreateMemberDto createMemberDto) {
         KeycloakUserDTO keycloakUserDTO = keycloakMapper.map(createMemberDto, Role.MEMBER);
         return keycloakService.addUser(keycloakUserDTO);
+    }
+
+    public List<Person> getAllMembers() {
+//        return memberRepository.getAllMembers().stream().map(member -> memberMapper.map(member)).collect(Collectors.toList());
+        return memberRepository.getAllMembers();
+
     }
 }
