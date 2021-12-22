@@ -1,11 +1,11 @@
 package com.switchfully.goatpark.repository.member;
 
-import com.switchfully.goatpark.domain.person.Person;
+import com.switchfully.goatpark.service.domain.person.Person;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
-import java.util.*;
+import java.util.List;
 
 @Repository
 @Transactional

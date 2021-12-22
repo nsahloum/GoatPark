@@ -28,7 +28,7 @@ public class MemberController {
         return memberService.registerMember(createMemberDto);
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, path = {"get"})
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasAnyAuthority('GET_ALL_MEMBERS')")
     @ResponseStatus(HttpStatus.OK)
     public List<Person> getAllMembers() {
