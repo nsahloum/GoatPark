@@ -67,13 +67,9 @@ public class MemberMapper {
     }
 
     public MembersDto map(Person person) {
-        return new MembersDto.MemberDtoBuilder()
+        MembersDto.MemberDtoBuilder memberDtoBuilder = new MembersDto.MemberDtoBuilder()
                 .withId(person.getId())
                 .withName(person.getName())
-                .withPhoneNumberDto(
-                        new PhoneNumberDto(
-                                person.getPhoneNumber().getPrefix(),
-                                person.getPhoneNumber().getNumber()))
                 .withEmailAddressDto(
                         new EmailAddressDto(
                                 person.getEmailAddress().getUsername(),
@@ -82,7 +78,19 @@ public class MemberMapper {
                         new MembershipDto(
                                 person.getMembership().getRegistrationDate(),
                                 person.getMembership().getLicensePlate().getNumberPlate())
-                )
-                .build();
+                );
+        if (person.getPhoneNumber() != null) {
+            memberDtoBuilder.withPhoneNumberDto(
+                    new PhoneNumberDto(
+                            person.getPhoneNumber().getPrefix(),
+                            person.getPhoneNumber().getNumber()));
+        }
+        if (person.getMobileNumber() != null) {
+            memberDtoBuilder.withMobileNumberDto(
+                    new PhoneNumberDto(
+                            person.getMobileNumber().getPrefix(),
+                            person.getMobileNumber().getNumber()));
+        }
+        return memberDtoBuilder.build();
     }
 }

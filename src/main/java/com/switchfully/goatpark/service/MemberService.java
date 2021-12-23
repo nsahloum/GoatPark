@@ -42,9 +42,8 @@ public class MemberService {
     }
 
     public List<MembersDto> getAllMembers() {
-        var result = memberRepository.getAllMembers().stream()
+        return memberRepository.getAllMembers().stream()
                 .map(memberMapper::map)
                 .collect(Collectors.toList());
-        return result;
     }
 }

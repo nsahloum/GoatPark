@@ -19,9 +19,7 @@ public class MemberRepository {
 
 
     public Person registerMember(Person person) {
-
         manager.persist(person);
-
         String sql = "SELECT p FROM Person p WHERE p.emailAddress = :email";
         return manager.createQuery(sql, Person.class)
                 .setParameter("email", person.getEmailAddress())

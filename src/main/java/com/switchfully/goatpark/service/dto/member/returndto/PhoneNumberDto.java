@@ -10,10 +10,6 @@ public class PhoneNumberDto {
         this.number = number;
     }
 
-    private boolean assertNotNull(String prefix) {
-        return false;
-    }
-
     public String getPrefix() {
         return prefix;
     }
@@ -21,5 +17,4 @@ public class PhoneNumberDto {
     public String getNumber() {
         return number;
     }
-
 }

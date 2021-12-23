@@ -59,18 +59,11 @@ public class Person {
         return name;
     }
 
-    // TODO: this will have to become obligated
     public PhoneNumber getPhoneNumber() {
-        if (mobileNumber == null) {
-            return new PhoneNumber("null", "null");
-        }
         return phoneNumber;
     }
 
     public PhoneNumber getMobileNumber() {
-        if (mobileNumber == null) {
-            return new PhoneNumber("null", "null");
-        }
         return mobileNumber;
     }
 
