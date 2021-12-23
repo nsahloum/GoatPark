@@ -1,11 +1,13 @@
 package com.switchfully.goatpark.repository.division;
 
 import com.switchfully.goatpark.service.domain.division.Division;
+import com.switchfully.goatpark.service.domain.person.Person;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 public class DivisionRepository {
@@ -31,5 +33,10 @@ public class DivisionRepository {
                 .setParameter("originalName", originalName)
                 .getResultList().stream().findFirst().orElse(null);
 
+    }
+
+    public List<Division> getAllDivisions() {
+        String sql = "SELECT d FROM Division d";
+        return entityManager.createQuery(sql, Division.class).getResultList();
     }
 }
