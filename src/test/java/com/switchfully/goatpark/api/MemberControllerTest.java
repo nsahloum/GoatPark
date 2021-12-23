@@ -101,7 +101,7 @@ class MemberControllerTest {
     @Test
     void endToEnd_getAllMembers() {
         Person person = new Person(
-                "DeleteMe",
+                "end to end get all members",
                 new PhoneNumber("0123", "451278"),
                 new PhoneNumber("0478", "757575"),
                 new EmailAddress("test", "goat.com"),
@@ -127,8 +127,8 @@ class MemberControllerTest {
                 .jsonPath()
                 .getList(".", MembersDto.class);
 
-        membersDtoList.forEach(System.out::println);
-        assertThat(membersDtoList.get(0).getName()).isEqualTo("DeleteMe");
+
+        assertThat(membersDtoList.stream().anyMatch(x -> x.getName().equals("end to end get all members"))).isTrue();
     }
 
     @Test
