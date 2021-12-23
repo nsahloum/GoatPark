@@ -1,7 +1,5 @@
 package com.switchfully.goatpark.service.dto.member.returndto;
 
-import com.switchfully.goatpark.service.domain.address.PostalCode;
-
 public class AddressDto {
 
     private final String streetName;

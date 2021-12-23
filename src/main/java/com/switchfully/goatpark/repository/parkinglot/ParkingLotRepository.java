@@ -1,7 +1,6 @@
 package com.switchfully.goatpark.repository.parkinglot;
 
-import com.switchfully.goatpark.service.domain.parkinglot.ParkingLot;
-import com.switchfully.goatpark.service.dto.parkinglot.ParkingLotOverviewDto;
+import com.switchfully.goatpark.domain.parkinglot.ParkingLot;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,7 +25,6 @@ public class ParkingLotRepository {
     }
 
     public ParkingLot getParkingLotById(int parkingLotId) {
-        System.err.println("parkingLot");
         return entityManager.find(ParkingLot.class, parkingLotId);
     }
 }

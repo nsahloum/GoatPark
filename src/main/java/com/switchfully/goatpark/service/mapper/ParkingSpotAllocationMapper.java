@@ -1,8 +1,8 @@
 package com.switchfully.goatpark.service.mapper;
 
-import com.switchfully.goatpark.service.domain.parkinglot.ParkingLot;
-import com.switchfully.goatpark.service.domain.parkingspotallocation.ParkingSpotAllocation;
-import com.switchfully.goatpark.service.domain.person.Person;
+import com.switchfully.goatpark.domain.parkinglot.ParkingLot;
+import com.switchfully.goatpark.domain.parkingspotallocation.ParkingSpotAllocation;
+import com.switchfully.goatpark.domain.person.Person;
 import com.switchfully.goatpark.service.dto.parkingallocation.ParkingAllocationDto;
 import org.springframework.stereotype.Component;
 

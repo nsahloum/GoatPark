@@ -1,7 +1,7 @@
-package com.switchfully.goatpark.service.domain.parkingspotallocation;
+package com.switchfully.goatpark.domain.parkingspotallocation;
 
-import com.switchfully.goatpark.service.domain.parkinglot.ParkingLot;
-import com.switchfully.goatpark.service.domain.person.Person;
+import com.switchfully.goatpark.domain.parkinglot.ParkingLot;
+import com.switchfully.goatpark.domain.person.Person;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

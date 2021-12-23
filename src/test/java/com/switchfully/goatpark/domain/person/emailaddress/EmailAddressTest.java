@@ -1,6 +1,5 @@
 package com.switchfully.goatpark.domain.person.emailaddress;
 
-import com.switchfully.goatpark.service.domain.person.emailaddress.EmailAddress;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,12 +1,12 @@
 package com.switchfully.goatpark.service.mapper;
 
-import com.switchfully.goatpark.service.domain.address.Address;
-import com.switchfully.goatpark.service.domain.address.PostalCode;
-import com.switchfully.goatpark.service.domain.person.Person;
-import com.switchfully.goatpark.service.domain.person.emailaddress.EmailAddress;
-import com.switchfully.goatpark.service.domain.person.membership.LicensePlate;
-import com.switchfully.goatpark.service.domain.person.membership.Membership;
-import com.switchfully.goatpark.service.domain.person.phonenumber.PhoneNumber;
+import com.switchfully.goatpark.domain.address.Address;
+import com.switchfully.goatpark.domain.address.PostalCode;
+import com.switchfully.goatpark.domain.person.Person;
+import com.switchfully.goatpark.domain.person.emailaddress.EmailAddress;
+import com.switchfully.goatpark.domain.person.membership.LicensePlate;
+import com.switchfully.goatpark.domain.person.membership.Membership;
+import com.switchfully.goatpark.domain.person.phonenumber.PhoneNumber;
 import com.switchfully.goatpark.service.dto.member.create.CreateMemberDto;
 import com.switchfully.goatpark.service.dto.member.returndto.*;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.service.domain.person.phonenumber;
+package com.switchfully.goatpark.domain.person.phonenumber;
 
 import javax.persistence.*;
 

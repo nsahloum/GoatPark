@@ -1,6 +1,6 @@
 package com.switchfully.goatpark.service.mapper;
 
-import com.switchfully.goatpark.service.domain.parkinglot.ParkingLot;
+import com.switchfully.goatpark.domain.parkinglot.ParkingLot;
 import com.switchfully.goatpark.service.dto.parkinglot.CreateParkingLotDto;
 import com.switchfully.goatpark.service.dto.parkinglot.ParkingLotDto;
 import com.switchfully.goatpark.service.dto.parkinglot.ParkingLotOverviewDto;

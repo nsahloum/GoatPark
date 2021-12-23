@@ -1,7 +1,7 @@
 package com.switchfully.goatpark.service.dto.parkinglot;
 
-import com.switchfully.goatpark.service.domain.person.emailaddress.EmailAddress;
-import com.switchfully.goatpark.service.domain.person.phonenumber.PhoneNumber;
+import com.switchfully.goatpark.domain.person.emailaddress.EmailAddress;
+import com.switchfully.goatpark.domain.person.phonenumber.PhoneNumber;
 
 import java.util.Objects;
 
