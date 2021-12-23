@@ -13,6 +13,15 @@ public class CreateParkingLotDto {
     private Address address;
     private double pricePerHour;
 
+    public CreateParkingLotDto(String name, Category category, int maximumCapacity, Person contactPerson, Address address, double pricePerHour) {
+        this.name = name;
+        this.category = category;
+        this.maximumCapacity = maximumCapacity;
+        this.contactPerson = contactPerson;
+        this.address = address;
+        this.pricePerHour = pricePerHour;
+    }
+
     public String getName() {
         return name;
     }
