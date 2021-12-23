@@ -30,7 +30,7 @@ class DivisionControllerTest {
 
     @BeforeAll
     void setUp(){
-        createDivisionDto = new CreateDivisionDto("testName", "OriginalName", "TestDirector");
+        createDivisionDto = new CreateDivisionDto("testName", "OriginalName", "TestDirector", null);
         url = "https://keycloak.switchfully.com/auth/realms/java-oct-2021/protocol/openid-connect/token";
 
         response = RestAssured

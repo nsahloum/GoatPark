@@ -1,5 +1,6 @@
 package com.switchfully.goatpark.service.division;
 
+import com.switchfully.goatpark.exception.NotExistingDivisionException;
 import com.switchfully.goatpark.service.domain.division.Division;
 import com.switchfully.goatpark.exception.NotUniqueException;
 import com.switchfully.goatpark.repository.division.DivisionRepository;
@@ -26,6 +27,10 @@ public class DivisionService {
     public DivisionDto createDivision(CreateDivisionDto divisionToCreate) {
         if (!isValidDivision(divisionToCreate)) {
             throw new NotUniqueException("This company already exist in the database");
+        }
+
+        if (divisionRepository.getById(divisionToCreate.getParentId()) == null) {
+            throw new NotExistingDivisionException("This division doesn't exist in the database");
         }
 
         Division divisionToSave = divisionMapper.mapCreateDivisionDtoToDivision(divisionToCreate);

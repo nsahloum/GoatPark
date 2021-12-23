@@ -11,7 +11,8 @@ public class DivisionMapper {
         return new Division(
                 createDivisionDto.getName(),
                 createDivisionDto.getOriginalName(),
-                createDivisionDto.getDirector()
+                createDivisionDto.getDirector(),
+                createDivisionDto.getParentId()
         );
     }
 
@@ -20,7 +21,8 @@ public class DivisionMapper {
                 .setDirector(division.getDirector())
                 .setId(division.getId())
                 .setName(division.getName())
-                .setOriginalName(division.getOriginalName());
+                .setOriginalName(division.getOriginalName())
+                .setParentId((division.getParentId()));
     }
 
 

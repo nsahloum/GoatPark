@@ -1,6 +1,6 @@
 package com.switchfully.goatpark.service.dto.division;
 
-import javax.persistence.Column;
+import com.switchfully.goatpark.repository.division.DivisionRepository;
 
 public class CreateDivisionDto {
 
@@ -10,10 +10,13 @@ public class CreateDivisionDto {
 
     private String director;
 
-    public CreateDivisionDto(String name, String originalName, String director) {
+    private Integer parentId;
+
+    public CreateDivisionDto(String name, String originalName, String director, Integer parentId) {
         this.name = name;
         this.originalName = originalName;
         this.director = director;
+        this.parentId = parentId;
     }
 
     public String getName() {
@@ -28,6 +31,7 @@ public class CreateDivisionDto {
         return director;
     }
 
-
-
+    public Integer getParentId() {
+        return parentId;
+    }
 }

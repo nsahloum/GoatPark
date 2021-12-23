@@ -31,7 +31,7 @@ public class DivisionController {
     @GetMapping
     @PreAuthorize("hasAnyAuthority('GET_ALL_DIVISIONS')")
     @ResponseStatus(HttpStatus.OK)
-    public List<DivisionDto> getAllMembers() {
+    public List<DivisionDto> getAllDivisions() {
         return divisionService.getAllDivisions();
     }
 

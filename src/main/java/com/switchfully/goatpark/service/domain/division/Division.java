@@ -23,10 +23,14 @@ public class Division {
     @Column(name = "director")
     private String director;
 
-    public Division(String name, String originalName, String director) {
+    @Column(name = "parent_division_id")
+    private Integer parentId;
+
+    public Division(String name, String originalName, String director, Integer parentId) {
         this.name = name;
         this.originalName = originalName;
         this.director = director;
+        this.parentId = parentId;
     }
 
     protected Division() {
@@ -48,5 +52,8 @@ public class Division {
         return director;
     }
 
+    public Integer getParentId() {
 
+        return parentId;
+    }
 }

@@ -1,5 +1,8 @@
 package com.switchfully.goatpark.service.dto.division;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+
 public class DivisionDto {
 
     private int id;
@@ -9,6 +12,9 @@ public class DivisionDto {
     private String originalName;
 
     private String director;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Integer parentId;
 
 
     public int getId() {
@@ -44,6 +50,15 @@ public class DivisionDto {
 
     public DivisionDto setDirector(String director) {
         this.director = director;
+        return this;
+    }
+
+    public Integer getParentId() {
+        return parentId;
+    }
+
+    public DivisionDto setParentId(Integer parentId) {
+        this.parentId = parentId;
         return this;
     }
 }

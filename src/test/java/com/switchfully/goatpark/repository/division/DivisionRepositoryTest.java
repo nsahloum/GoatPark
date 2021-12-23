@@ -25,7 +25,7 @@ class DivisionRepositoryTest {
 
     @BeforeAll
     public void setUp() {
-        division = new Division("Division Name", "Original name", "Najima");
+        division = new Division("Division Name", "Original name", "Najima", 0);
         saved = divisionRepository.save(division);
     }
 
