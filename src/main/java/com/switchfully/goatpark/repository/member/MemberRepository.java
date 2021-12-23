@@ -19,9 +19,7 @@ public class MemberRepository {
 
 
     public Person registerMember(Person person) {
-
         manager.persist(person);
-
         String sql = "SELECT p FROM Person p WHERE p.emailAddress = :email";
         return manager.createQuery(sql, Person.class)
                 .setParameter("email", person.getEmailAddress())
@@ -29,7 +27,7 @@ public class MemberRepository {
     }
 
     public List<Person> getAllMembers() {
-        String sql = "SELECT p FROM Person p WHERE p.membership IS NULL";
+        String sql = "SELECT p FROM Person p WHERE p.membership IS NOT NULL";
         return manager.createQuery(sql, Person.class).getResultList();
     }
 

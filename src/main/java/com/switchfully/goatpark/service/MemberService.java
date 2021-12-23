@@ -1,17 +1,18 @@
 package com.switchfully.goatpark.service;
 
-import com.switchfully.goatpark.service.domain.person.Person;
+import com.switchfully.goatpark.exception.PhoneNumberIsRequiredException;
 import com.switchfully.goatpark.repository.member.MemberRepository;
 import com.switchfully.goatpark.security.KeycloakService;
 import com.switchfully.goatpark.security.KeycloakUserDTO;
 import com.switchfully.goatpark.security.Role;
+import com.switchfully.goatpark.service.domain.person.Person;
 import com.switchfully.goatpark.service.dto.member.create.CreateMemberDto;
+import com.switchfully.goatpark.service.dto.member.returndto.MembersDto;
 import com.switchfully.goatpark.service.dto.member.returndto.PersonDto;
 import com.switchfully.goatpark.service.mapper.KeycloakMapper;
 import com.switchfully.goatpark.service.mapper.MemberMapper;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,9 +32,16 @@ public class MemberService {
     }
 
     public PersonDto registerMember(CreateMemberDto createMemberDto) {
+        assertPhoneNumberIsPressent(createMemberDto);
         String keycloakId = addPersonToKeycloak(createMemberDto);
         Person person = memberMapper.map(createMemberDto);
         return memberMapper.map(memberRepository.registerMember(person), keycloakId);
+    }
+
+    private void assertPhoneNumberIsPressent(CreateMemberDto createMemberDto) {
+        if (createMemberDto.phoneNumber() == null && createMemberDto.mobileNumber() == null) {
+            throw new PhoneNumberIsRequiredException("At least one telephone number is required");
+        }
     }
 
     private String addPersonToKeycloak(CreateMemberDto createMemberDto) {
@@ -41,9 +49,9 @@ public class MemberService {
         return keycloakService.addUser(keycloakUserDTO);
     }
 
-    public List<Person> getAllMembers() {
-//        return memberRepository.getAllMembers().stream().map(member -> memberMapper.map(member)).collect(Collectors.toList());
-        return memberRepository.getAllMembers();
-
+    public List<MembersDto> getAllMembers() {
+        return memberRepository.getAllMembers().stream()
+                .map(memberMapper::map)
+                .collect(Collectors.toList());
     }
 }

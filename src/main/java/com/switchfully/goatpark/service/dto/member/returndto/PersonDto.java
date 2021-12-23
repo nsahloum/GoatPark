@@ -5,21 +5,20 @@ public class PersonDto {
     private final int id;
     private final String name;
     private final PhoneNumberDto phoneNumberDto;
+    private final EmailAddressDto emailAddressDto;
     private final PhoneNumberDto mobileNumber;
-    private final EmailAdresDto emailAdresDto;
     private final AddressDto addressDto;
     private final String keycloakId;
-    private final MembershipDto membershipDto;
 
-    private PersonDto(int id, String name, String keycloakId, PhoneNumberDto phoneNumberDto, PhoneNumberDto mobileNumber, EmailAdresDto emailAdresDto, AddressDto addressDto, MembershipDto membershipDto) {
+    private PersonDto(int id, String name, PhoneNumberDto phoneNumberDto, EmailAddressDto emailAddressDto, PhoneNumberDto mobileNumber, AddressDto addressDto, String keycloakId) {
         this.id = id;
         this.name = name;
-        this.keycloakId = keycloakId;
         this.phoneNumberDto = phoneNumberDto;
+        this.emailAddressDto = emailAddressDto;
+
         this.mobileNumber = mobileNumber;
-        this.emailAdresDto = emailAdresDto;
         this.addressDto = addressDto;
-        this.membershipDto = membershipDto;
+        this.keycloakId = keycloakId;
     }
 
     public int getId() {
@@ -38,8 +37,8 @@ public class PersonDto {
         return mobileNumber;
     }
 
-    public EmailAdresDto getEmailAdresDto() {
-        return emailAdresDto;
+    public EmailAddressDto getEmailAddressDto() {
+        return emailAddressDto;
     }
 
     public AddressDto getAddressDto() {
@@ -55,11 +54,10 @@ public class PersonDto {
         private String name;
         private PhoneNumberDto phoneNumberDto;
         private PhoneNumberDto mobileNumber;
-        private EmailAdresDto emailAdresDto;
+        private EmailAddressDto emailAddressDto;
         private AddressDto addressDto;
         private MembershipDto membershipDto;
         private String keycloakId;
-
 
         public PersonDtoBuilder withId(int id) {
             this.id = id;
@@ -81,8 +79,8 @@ public class PersonDto {
             return this;
         }
 
-        public PersonDtoBuilder withEmailAddressDto(EmailAdresDto emailAdresDto) {
-            this.emailAdresDto = emailAdresDto;
+        public PersonDtoBuilder withEmailAddressDto(EmailAddressDto emailAddressDto) {
+            this.emailAddressDto = emailAddressDto;
             return this;
         }
 
@@ -91,18 +89,13 @@ public class PersonDto {
             return this;
         }
 
-        public PersonDtoBuilder withMembershipDto(MembershipDto membershipDto) {
-            this.membershipDto = membershipDto;
+        public PersonDtoBuilder withKeycloakId(String keycloakId) {
+            this.keycloakId = keycloakId;
             return this;
         }
 
         public PersonDto build() {
-            return new PersonDto(id, name, keycloakId, phoneNumberDto, mobileNumber, emailAdresDto, addressDto, membershipDto);
-        }
-
-        public PersonDtoBuilder withKeycloakId(String keycloakId) {
-            this.keycloakId = keycloakId;
-            return this;
+            return new PersonDto(id,name,phoneNumberDto, emailAddressDto, mobileNumber,addressDto,keycloakId);
         }
     }
 }

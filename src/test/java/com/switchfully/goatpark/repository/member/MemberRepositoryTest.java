@@ -29,7 +29,9 @@ class MemberRepositoryTest {
     void setUp() {
         person = new Person(
                 "name",
-                new PhoneNumber("0475", "757575"),
+                new PhoneNumber(
+                        "0475",
+                        "757575"),
                 null,
                 new EmailAddress(
                         "goat",

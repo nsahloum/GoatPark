@@ -39,4 +39,10 @@ public class DivisionRepository {
         String sql = "SELECT d FROM Division d";
         return entityManager.createQuery(sql, Division.class).getResultList();
     }
+
+    public Division getById(int id) {
+        String sql = "SELECT d FROM Division d WHERE d.id = :id";
+        return entityManager.createQuery(sql,Division.class).setParameter("id", id).getResultList().stream().findFirst().orElse(null);
+
+    }
 }
