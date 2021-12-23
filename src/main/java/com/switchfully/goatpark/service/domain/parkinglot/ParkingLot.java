@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "parking_lot")
 public class ParkingLot {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "parking_lot_seq")
     private int id;
 
     @Column(name = "name")
@@ -23,11 +23,11 @@ public class ParkingLot {
     private int maximumCapacity;
 
     @JoinColumn(name = "fk_person_id")
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Person contactPerson;
 
     @JoinColumn(name = "fk_address_id")
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Address address;
 
     @Column(name = "price_per_hour")
@@ -43,6 +43,10 @@ public class ParkingLot {
         this.contactPerson = parkingLotBuilder.contactPerson;
         this.address = parkingLotBuilder.address;
         this.pricePerHour = parkingLotBuilder.pricePerHour;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
