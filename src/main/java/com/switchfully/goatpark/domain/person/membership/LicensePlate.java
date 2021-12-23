@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.service.domain.person.membership;
+package com.switchfully.goatpark.domain.person.membership;
 
 import javax.persistence.*;
 

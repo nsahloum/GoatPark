@@ -1,6 +1,6 @@
 package com.switchfully.goatpark.repository.parkingallocation;
 
-import com.switchfully.goatpark.service.domain.parkingspotallocation.ParkingSpotAllocation;
+import com.switchfully.goatpark.domain.parkingspotallocation.ParkingSpotAllocation;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

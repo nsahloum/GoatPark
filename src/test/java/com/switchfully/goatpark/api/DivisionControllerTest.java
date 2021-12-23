@@ -2,7 +2,6 @@ package com.switchfully.goatpark.api;
 
 import com.switchfully.goatpark.repository.division.DivisionRepository;
 import com.switchfully.goatpark.service.division.DivisionService;
-import com.switchfully.goatpark.service.domain.division.Division;
 import com.switchfully.goatpark.service.dto.division.CreateDivisionDto;
 import com.switchfully.goatpark.service.dto.division.DivisionDto;
 import io.restassured.RestAssured;

@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.service.domain.person.emailaddress;
+package com.switchfully.goatpark.domain.person.emailaddress;
 
 import javax.persistence.*;
 import java.util.Objects;

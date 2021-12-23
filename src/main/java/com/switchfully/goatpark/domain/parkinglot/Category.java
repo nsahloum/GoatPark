@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.service.domain.parkinglot;
+package com.switchfully.goatpark.domain.parkinglot;
 
 public enum Category {
     UNDERGROUND_BUILDING,

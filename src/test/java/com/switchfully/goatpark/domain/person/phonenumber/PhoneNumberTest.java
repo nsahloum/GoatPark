@@ -1,6 +1,5 @@
 package com.switchfully.goatpark.domain.person.phonenumber;
 
-import com.switchfully.goatpark.service.domain.person.phonenumber.PhoneNumber;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

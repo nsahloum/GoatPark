@@ -1,9 +1,9 @@
-package com.switchfully.goatpark.service.domain.person;
+package com.switchfully.goatpark.domain.person;
 
-import com.switchfully.goatpark.service.domain.address.Address;
-import com.switchfully.goatpark.service.domain.person.emailaddress.EmailAddress;
-import com.switchfully.goatpark.service.domain.person.membership.Membership;
-import com.switchfully.goatpark.service.domain.person.phonenumber.PhoneNumber;
+import com.switchfully.goatpark.domain.address.Address;
+import com.switchfully.goatpark.domain.person.membership.Membership;
+import com.switchfully.goatpark.domain.person.emailaddress.EmailAddress;
+import com.switchfully.goatpark.domain.person.phonenumber.PhoneNumber;
 
 import javax.persistence.*;
 

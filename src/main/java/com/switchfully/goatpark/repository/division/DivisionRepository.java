@@ -1,7 +1,6 @@
 package com.switchfully.goatpark.repository.division;
 
-import com.switchfully.goatpark.service.domain.division.Division;
-import com.switchfully.goatpark.service.domain.person.Person;
+import com.switchfully.goatpark.domain.division.Division;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

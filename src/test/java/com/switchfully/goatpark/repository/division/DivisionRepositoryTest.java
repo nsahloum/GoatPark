@@ -1,7 +1,6 @@
 package com.switchfully.goatpark.repository.division;
 
-import com.switchfully.goatpark.service.domain.division.Division;
-import com.switchfully.goatpark.service.dto.division.DivisionDto;
+import com.switchfully.goatpark.domain.division.Division;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

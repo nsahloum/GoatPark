@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.service.domain.address;
+package com.switchfully.goatpark.domain.address;
 
 import javax.persistence.*;
 

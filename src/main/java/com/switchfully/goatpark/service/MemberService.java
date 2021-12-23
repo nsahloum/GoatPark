@@ -5,7 +5,7 @@ import com.switchfully.goatpark.repository.member.MemberRepository;
 import com.switchfully.goatpark.security.KeycloakService;
 import com.switchfully.goatpark.security.KeycloakUserDTO;
 import com.switchfully.goatpark.security.Role;
-import com.switchfully.goatpark.service.domain.person.Person;
+import com.switchfully.goatpark.domain.person.Person;
 import com.switchfully.goatpark.service.dto.member.create.CreateMemberDto;
 import com.switchfully.goatpark.service.dto.member.returndto.MembersDto;
 import com.switchfully.goatpark.service.dto.member.returndto.PersonDto;
