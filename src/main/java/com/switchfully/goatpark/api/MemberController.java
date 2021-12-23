@@ -28,6 +28,7 @@ public class MemberController {
         return memberService.registerMember(createMemberDto);
     }
 
+
     @GetMapping
     @PreAuthorize("hasAnyAuthority('GET_ALL_MEMBERS')")
     @ResponseStatus(HttpStatus.OK)
