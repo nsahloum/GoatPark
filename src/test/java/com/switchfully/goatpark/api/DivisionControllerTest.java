@@ -1,5 +1,7 @@
 package com.switchfully.goatpark.api;
 
+import com.switchfully.goatpark.repository.division.DivisionRepository;
+import com.switchfully.goatpark.service.division.DivisionService;
 import com.switchfully.goatpark.service.dto.division.CreateDivisionDto;
 import com.switchfully.goatpark.service.dto.division.DivisionDto;
 import io.restassured.RestAssured;
@@ -8,6 +10,7 @@ import io.restassured.parsing.Parser;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
@@ -27,6 +30,9 @@ class DivisionControllerTest {
     String url;
     String response;
     CreateDivisionDto createDivisionDto;
+
+    @Autowired
+    DivisionService divisionService;
 
     @BeforeAll
     void setUp(){
@@ -72,6 +78,8 @@ class DivisionControllerTest {
     @Test
     void endToEnd_GetAllDivisions(){
         RestAssured.defaultParser = Parser.JSON;
+        CreateDivisionDto createDivisionDto2 = new CreateDivisionDto("testName2", "OriginalName2", "TestDirector");
+        divisionService.createDivision(createDivisionDto2);
         List<DivisionDto> divisionDto = RestAssured
                 .given()
                 .auth()
@@ -85,7 +93,7 @@ class DivisionControllerTest {
                 .jsonPath()
                 .getList(".", DivisionDto.class);
 
-        assertThat(divisionDto).isNotNull();
+        assertThat(divisionDto).isNotEmpty();
     }
 
 
