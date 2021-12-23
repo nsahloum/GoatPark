@@ -1,12 +1,15 @@
 package com.switchfully.goatpark.repository.division;
 
 import com.switchfully.goatpark.service.domain.division.Division;
+import com.switchfully.goatpark.service.dto.division.DivisionDto;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -41,5 +44,11 @@ class DivisionRepositoryTest {
     public void getByOriginalName() {
         divisionRepository.findDivisionByOriginalName("Original name");
         assertThat(division).isNotNull();
+    }
+
+    @Test
+    public void getAllDivisions(){
+        List<Division> divisions = divisionRepository.getAllDivisions();
+        assertThat(divisions).isNotNull();
     }
 }

@@ -5,26 +5,35 @@ import com.switchfully.goatpark.service.dto.division.DivisionDto;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class DivisionControllerTest {
 
     @LocalServerPort
     private int port;
+    String url;
+    String response;
+    CreateDivisionDto createDivisionDto;
 
-    @Test
-    void endToEnd_saveDivision() {
-        String url = "https://keycloak.switchfully.com/auth/realms/java-oct-2021/protocol/openid-connect/token";
+    @BeforeAll
+    void setUp(){
+        createDivisionDto = new CreateDivisionDto("testName", "OriginalName", "TestDirector");
+        url = "https://keycloak.switchfully.com/auth/realms/java-oct-2021/protocol/openid-connect/token";
 
-        String response = RestAssured
+        response = RestAssured
                 .given()
                 .contentType("application/x-www-form-urlencoded; charset=utf-8")
                 .formParam("grant_type", "password")
@@ -37,9 +46,10 @@ class DivisionControllerTest {
                 .extract()
                 .path("access_token")
                 .toString();
+    }
 
-
-        CreateDivisionDto createDivisionDto = new CreateDivisionDto("testName", "OriginalName", "TestDirector");
+    @Test
+    void endToEnd_saveDivision() {
         RestAssured.defaultParser = Parser.JSON;
         DivisionDto divisionDto = RestAssured
                 .given()
@@ -58,5 +68,26 @@ class DivisionControllerTest {
 
         assertThat(divisionDto).isNotNull();
     }
+
+    @Test
+    void endToEnd_GetAllDivisions(){
+        RestAssured.defaultParser = Parser.JSON;
+        List<DivisionDto> divisionDto = RestAssured
+                .given()
+                .auth()
+                .oauth2(response)
+                .when()
+                .port(port)
+                .get("/divisions")
+                .then()
+                .assertThat().statusCode(HttpStatus.OK.value())
+                .extract()
+                .jsonPath()
+                .getList(".", DivisionDto.class);
+
+        assertThat(divisionDto).isNotNull();
+    }
+
+
 
 }
