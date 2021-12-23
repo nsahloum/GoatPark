@@ -1,5 +1,6 @@
 package com.switchfully.goatpark.service.dto.division;
 
+import com.switchfully.goatpark.repository.division.DivisionRepository;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -11,10 +12,13 @@ public class CreateDivisionDto {
 
     private String director;
 
-    public CreateDivisionDto(String name, String originalName, String director) {
+    private Integer parentId;
+
+    public CreateDivisionDto(String name, String originalName, String director, Integer parentId) {
         this.name = name;
         this.originalName = originalName;
         this.director = director;
+        this.parentId = parentId;
     }
 
     public String getName() {
@@ -29,6 +33,7 @@ public class CreateDivisionDto {
         return director;
     }
 
-
-
+    public Integer getParentId() {
+        return parentId;
+    }
 }
