@@ -1,13 +1,9 @@
 package com.switchfully.goatpark.service.mapper;
 
-import com.switchfully.goatpark.service.domain.address.Address;
-import com.switchfully.goatpark.service.domain.address.PostalCode;
 import com.switchfully.goatpark.service.domain.parkinglot.ParkingLot;
-import com.switchfully.goatpark.service.domain.person.Person;
-import com.switchfully.goatpark.service.domain.person.emailaddress.EmailAddress;
-import com.switchfully.goatpark.service.domain.person.phonenumber.PhoneNumber;
 import com.switchfully.goatpark.service.dto.parkinglot.CreateParkingLotDto;
 import com.switchfully.goatpark.service.dto.parkinglot.ParkingLotDto;
+import com.switchfully.goatpark.service.dto.parkinglot.ParkingLotOverviewDto;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -35,6 +31,14 @@ public class ParkingLotMapper {
                 .setContactPerson(parkingLot.getContactPerson())
                 .setMaximumCapacity(parkingLot.getMaximumCapacity())
                 .setPricePerHour(parkingLot.getPricePerHour());
+    }
 
+    public ParkingLotOverviewDto mapParkingLotToParkingLotOverviewDto(ParkingLot parkingLot) {
+        return new ParkingLotOverviewDto()
+                .setId(parkingLot.getId())
+                .setName(parkingLot.getName())
+                .setMaximumCapacity(parkingLot.getMaximumCapacity())
+                .setContactPersonEmail(parkingLot.getContactPerson().getEmailAddress())
+                .setContactPersonPhoneNumber(parkingLot.getContactPerson().getPhoneNumber());
     }
 }

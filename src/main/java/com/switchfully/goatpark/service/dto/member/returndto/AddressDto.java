@@ -4,20 +4,14 @@ import com.switchfully.goatpark.service.domain.address.PostalCode;
 
 public class AddressDto {
 
-    private final int id;
     private final String streetName;
     private final String streetNumber;
     private final PostalCodeDto postalCode;
 
-    public AddressDto(int id, String streetName, String streetNumber, PostalCodeDto postalCode) {
-        this.id = id;
+    public AddressDto(String streetName, String streetNumber, PostalCodeDto postalCode) {
         this.streetName = streetName;
         this.streetNumber = streetNumber;
         this.postalCode = postalCode;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getStreetName() {

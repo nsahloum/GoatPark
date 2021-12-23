@@ -81,7 +81,7 @@ public class ParkingLot {
         private Address address;
         private double pricePerHour;
 
-        private ParkingLotBuilder() {
+        public ParkingLotBuilder() {
         }
 
         public static ParkingLotBuilder parkingLotBuilder() {

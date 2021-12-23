@@ -1,7 +1,5 @@
 package com.switchfully.goatpark.service.dto.member.create;
 
-import javax.persistence.Column;
-
 public class CreatePhoneNumberDto {
 
     private String prefix;

@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 public class KeycloakMapper {
 
     public KeycloakUserDTO map(CreateMemberDto createMemberDto, Role role) {
-        return new KeycloakUserDTO(createMemberDto.getUsername(), createMemberDto.getPassword(), role);
+        return new KeycloakUserDTO(
+                createMemberDto.username(),
+                createMemberDto.password(),
+                role);
     }
 }
