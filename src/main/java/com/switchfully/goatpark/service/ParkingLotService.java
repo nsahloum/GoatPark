@@ -4,8 +4,11 @@ import com.switchfully.goatpark.repository.parkinglot.ParkingLotRepository;
 import com.switchfully.goatpark.service.domain.parkinglot.ParkingLot;
 import com.switchfully.goatpark.service.dto.parkinglot.CreateParkingLotDto;
 import com.switchfully.goatpark.service.dto.parkinglot.ParkingLotDto;
+import com.switchfully.goatpark.service.dto.parkinglot.ParkingLotOverviewDto;
 import com.switchfully.goatpark.service.mapper.ParkingLotMapper;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ParkingLotService {
@@ -21,5 +24,10 @@ public class ParkingLotService {
         ParkingLot parkingLotToSave = parkingLotMapper.mapCreateParkingLotDtoToParkingLot(parkingLotToCreate);
         parkingLotRepository.save(parkingLotToSave);
         return parkingLotMapper.mapParkingLotToParkingLotDto(parkingLotToSave);
+    }
+
+    public List<ParkingLotOverviewDto> getAllParkingLots() {
+        return parkingLotRepository.getAll().stream()
+                .map(parkingLot -> parkingLotMapper.mapParkingLotToParkingLotOverviewDto(parkingLot)).toList();
     }
 }
