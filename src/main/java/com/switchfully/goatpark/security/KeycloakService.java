@@ -45,7 +45,6 @@ public class KeycloakService {
         try {
             return CreatedResponseUtil.getCreatedId(createUser(keycloakUserDTO.userName()));
         } catch (WebApplicationException exception) {
-            System.out.println("GOTYA");
             throw new UserAlreadyExistsException(keycloakUserDTO.userName());
         }
     }
