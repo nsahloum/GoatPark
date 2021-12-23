@@ -1,24 +1,32 @@
 package com.switchfully.goatpark.api;
 
+import com.switchfully.goatpark.repository.parkinglot.ParkingLotRepository;
 import com.switchfully.goatpark.service.domain.address.Address;
 import com.switchfully.goatpark.service.domain.address.PostalCode;
 import com.switchfully.goatpark.service.domain.parkinglot.Category;
+import com.switchfully.goatpark.service.domain.parkinglot.ParkingLot;
 import com.switchfully.goatpark.service.domain.person.Person;
 import com.switchfully.goatpark.service.domain.person.emailaddress.EmailAddress;
 import com.switchfully.goatpark.service.domain.person.phonenumber.PhoneNumber;
 import com.switchfully.goatpark.service.dto.parkinglot.CreateParkingLotDto;
 import com.switchfully.goatpark.service.dto.parkinglot.ParkingLotDto;
+import com.switchfully.goatpark.service.dto.parkinglot.ParkingLotOverviewDto;
+import com.switchfully.goatpark.service.mapper.ParkingLotMapper;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,6 +37,10 @@ public class ParkingLotControllerTest {
 
     @LocalServerPort
     private int port;
+    @Autowired
+    private ParkingLotRepository parkingLotRepository;
+    @Autowired
+    private ParkingLotMapper parkingLotMapper;
 
     private String keycloakToken;
     private CreateParkingLotDto createParkingLotDto;
@@ -77,8 +89,17 @@ public class ParkingLotControllerTest {
 
     @Test
     void endToEnd_GetAllParkingLots() {
+        ParkingLot parkingLot = new ParkingLot.ParkingLotBuilder()
+                .withCategory(createParkingLotDto.getCategory())
+                .withName(createParkingLotDto.getName())
+                .withContactPerson(createParkingLotDto.getContactPerson())
+                .withPricePerHour(createParkingLotDto.getPricePerHour())
+                .withMaximumCapacity(createParkingLotDto.getMaximumCapacity())
+                .withAddress(createParkingLotDto.getAddress()).build();
+
+        ParkingLot saved = parkingLotRepository.save(parkingLot);
         RestAssured.defaultParser = Parser.JSON;
-        RestAssured
+        ParkingLotOverviewDto[] parkinglotArray = RestAssured
                 .given()
                 .auth()
                 .oauth2(keycloakToken)
@@ -89,8 +110,13 @@ public class ParkingLotControllerTest {
                 .get("/parkinglots")
                 .then()
                 .assertThat()
-                .statusCode(HttpStatus.OK.value());
+                .statusCode(HttpStatus.OK.value())
+                .extract()
+                .as(ParkingLotOverviewDto[].class);
 
+        assertThat(Arrays.stream(parkinglotArray)
+                .anyMatch(x -> x.getId() == parkingLotMapper.mapParkingLotToParkingLotOverviewDto(saved).getId()))
+                .isTrue();
     }
 
     private Person getPersonForTesting() {

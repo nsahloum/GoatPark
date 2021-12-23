@@ -3,11 +3,13 @@ package com.switchfully.goatpark.service.dto.parkinglot;
 import com.switchfully.goatpark.service.domain.person.emailaddress.EmailAddress;
 import com.switchfully.goatpark.service.domain.person.phonenumber.PhoneNumber;
 
+import java.util.Objects;
+
 public class ParkingLotOverviewDto {
 
     private int id;
     private String name;
-    private int maximum_capacity;
+    private int maximumCapacity;
     private EmailAddress contactPersonEmail;
     private PhoneNumber contactPersonPhoneNumber;
 
@@ -29,12 +31,12 @@ public class ParkingLotOverviewDto {
         return this;
     }
 
-    public int getMaximum_capacity() {
-        return maximum_capacity;
+    public int getMaximumCapacity() {
+        return maximumCapacity;
     }
 
-    public ParkingLotOverviewDto setMaximum_capacity(int maximum_capacity) {
-        this.maximum_capacity = maximum_capacity;
+    public ParkingLotOverviewDto setMaximumCapacity(int maximumCapacity) {
+        this.maximumCapacity = maximumCapacity;
         return this;
     }
 
@@ -54,5 +56,18 @@ public class ParkingLotOverviewDto {
     public ParkingLotOverviewDto setContactPersonPhoneNumber(PhoneNumber contactPersonPhoneNumber) {
         this.contactPersonPhoneNumber = contactPersonPhoneNumber;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ParkingLotOverviewDto that = (ParkingLotOverviewDto) o;
+        return id == that.id && maximumCapacity == that.maximumCapacity && Objects.equals(name, that.name) && Objects.equals(contactPersonEmail, that.contactPersonEmail) && Objects.equals(contactPersonPhoneNumber, that.contactPersonPhoneNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, maximumCapacity, contactPersonEmail, contactPersonPhoneNumber);
     }
 }

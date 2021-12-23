@@ -31,14 +31,13 @@ public class ParkingLotMapper {
                 .setContactPerson(parkingLot.getContactPerson())
                 .setMaximumCapacity(parkingLot.getMaximumCapacity())
                 .setPricePerHour(parkingLot.getPricePerHour());
-
     }
 
-    public ParkingLotOverviewDto mapParkingLotToParkingLotOverviewDto(ParkingLot parkingLot){
+    public ParkingLotOverviewDto mapParkingLotToParkingLotOverviewDto(ParkingLot parkingLot) {
         return new ParkingLotOverviewDto()
                 .setId(parkingLot.getId())
                 .setName(parkingLot.getName())
-                .setMaximum_capacity(parkingLot.getMaximumCapacity())
+                .setMaximumCapacity(parkingLot.getMaximumCapacity())
                 .setContactPersonEmail(parkingLot.getContactPerson().getEmailAddress())
                 .setContactPersonPhoneNumber(parkingLot.getContactPerson().getPhoneNumber());
     }
