@@ -22,7 +22,7 @@ public class DivisionMapper {
                 .setId(division.getId())
                 .setName(division.getName())
                 .setOriginalName(division.getOriginalName())
-                .setParentId((division.getParentId()));
+                .setParentId(division.getParentId());
     }
 
 

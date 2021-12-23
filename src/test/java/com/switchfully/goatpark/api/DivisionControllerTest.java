@@ -2,6 +2,7 @@ package com.switchfully.goatpark.api;
 
 import com.switchfully.goatpark.repository.division.DivisionRepository;
 import com.switchfully.goatpark.service.division.DivisionService;
+import com.switchfully.goatpark.service.domain.division.Division;
 import com.switchfully.goatpark.service.dto.division.CreateDivisionDto;
 import com.switchfully.goatpark.service.dto.division.DivisionDto;
 import io.restassured.RestAssured;
@@ -33,6 +34,9 @@ class DivisionControllerTest {
 
     @Autowired
     DivisionService divisionService;
+
+    @Autowired
+    DivisionRepository divisionRepository;
 
     @BeforeAll
     void setUp(){
@@ -78,7 +82,7 @@ class DivisionControllerTest {
     @Test
     void endToEnd_GetAllDivisions(){
         RestAssured.defaultParser = Parser.JSON;
-        CreateDivisionDto createDivisionDto2 = new CreateDivisionDto("testName2", "OriginalName2", "TestDirector", 0);
+        CreateDivisionDto createDivisionDto2 = new CreateDivisionDto("testName2", "OriginalName2", "TestDirector", null);
         divisionService.createDivision(createDivisionDto2);
         List<DivisionDto> divisionDto = RestAssured
                 .given()
