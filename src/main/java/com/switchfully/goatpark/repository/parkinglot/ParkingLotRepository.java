@@ -21,7 +21,12 @@ public class ParkingLotRepository {
     }
 
     public List<ParkingLot> getAll() {
-       return entityManager.createQuery("select p from ParkingLot p", ParkingLot.class)
-               .getResultList();
+        return entityManager.createQuery("select p from ParkingLot p", ParkingLot.class)
+                .getResultList();
+    }
+
+    public ParkingLot getParkingLotById(int parkingLotId) {
+        System.err.println("parkingLot");
+        return entityManager.find(ParkingLot.class, parkingLotId);
     }
 }

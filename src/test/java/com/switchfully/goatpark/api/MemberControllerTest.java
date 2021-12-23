@@ -1,5 +1,6 @@
 package com.switchfully.goatpark.api;
 
+import com.switchfully.goatpark.exception.PhoneNumberIsRequiredException;
 import com.switchfully.goatpark.repository.member.MemberRepository;
 import com.switchfully.goatpark.security.KeycloakService;
 import com.switchfully.goatpark.service.domain.address.Address;
@@ -26,12 +27,14 @@ import java.util.List;
 
 import static io.restassured.http.ContentType.JSON;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MemberControllerTest {
 
+    private static final String MESSAGE = "At least one telephone number is required";
     @LocalServerPort
     private int port;
 
@@ -39,6 +42,8 @@ class MemberControllerTest {
     private KeycloakService keycloakService;
     @Autowired
     private MemberRepository repository;
+    @Autowired
+    private MemberController memberController;
     String url;
     String token;
 
@@ -64,13 +69,13 @@ class MemberControllerTest {
     @Test
     void endToEnd_registerMember() {
         CreateMemberDto createMemberDto = new CreateMemberDto(
-            "DeleteMe", "password", "name",
-            new CreateAddressDto("streetName", "5",
-                    new CreatePostalCodeDto("code", "label")),
-            new CreatePhoneNumberDto("0478", "757575"),
-            new CreatePhoneNumberDto("0478", "757575"),
-            new CreateEmailDto("test", "goat.com"),
-            new CreateLicensePlateDto("goat-123", "BE"));
+                "DeleteMe", "password", "name",
+                new CreateAddressDto("streetName", "5",
+                        new CreatePostalCodeDto("code", "label")),
+                new CreatePhoneNumberDto("0478", "757575"),
+                new CreatePhoneNumberDto("0478", "757575"),
+                new CreateEmailDto("test", "goat.com"),
+                new CreateLicensePlateDto("goat-123", "BE"));
 
         RestAssured.defaultParser = Parser.JSON;
         PersonDto personDto = RestAssured
@@ -96,7 +101,7 @@ class MemberControllerTest {
     @Test
     void endToEnd_getAllMembers() {
         Person person = new Person(
-                "DeleteMe",
+                "end to end get all members",
                 new PhoneNumber("0123", "451278"),
                 new PhoneNumber("0478", "757575"),
                 new EmailAddress("test", "goat.com"),
@@ -122,7 +127,21 @@ class MemberControllerTest {
                 .jsonPath()
                 .getList(".", MembersDto.class);
 
-        membersDtoList.forEach(System.out::println);
-        assertThat(membersDtoList.get(0).getName()).isEqualTo("DeleteMe");
+
+        assertThat(membersDtoList.stream().anyMatch(x -> x.getName().equals("end to end get all members"))).isTrue();
+    }
+
+    @Test
+    void whenNoPhoneNumbers_thenExceptionIsThrown() {
+        assertThatThrownBy(() -> memberController.register(
+                new CreateMemberDto("uname", "pw", "name",
+                        new CreateAddressDto("streetName", "5",
+                                new CreatePostalCodeDto("code", "label")),
+                        null,
+                        null,
+                        new CreateEmailDto("test", "goat.com"),
+                        new CreateLicensePlateDto("goat-123", "BE"))))
+                .isInstanceOf(PhoneNumberIsRequiredException.class)
+                .hasMessage(MESSAGE);
     }
 }

@@ -30,4 +30,10 @@ public class MemberRepository {
         String sql = "SELECT p FROM Person p WHERE p.membership IS NOT NULL";
         return manager.createQuery(sql, Person.class).getResultList();
     }
+
+    public Person getMemberById(int personId) {
+        return manager.createQuery("select p from Person p where p.id  = :personId", Person.class)
+                .setParameter("personId", personId)
+                .getResultList().stream().findFirst().orElse(null);
+    }
 }

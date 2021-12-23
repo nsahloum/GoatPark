@@ -4,20 +4,19 @@ public class PersonDto {
 
     private final int id;
     private final String name;
-    private final PhoneNumberDto phoneNumberDto;
-    private final EmailAddressDto emailAddressDto;
+    private final PhoneNumberDto phoneNumber;
+    private final EmailAddressDto email;
     private final PhoneNumberDto mobileNumber;
-    private final AddressDto addressDto;
+    private final AddressDto address;
     private final String keycloakId;
 
-    private PersonDto(int id, String name, PhoneNumberDto phoneNumberDto, EmailAddressDto emailAddressDto, PhoneNumberDto mobileNumber, AddressDto addressDto, String keycloakId) {
+    private PersonDto(int id, String name, PhoneNumberDto phoneNumberDto, PhoneNumberDto mobileNumber, EmailAddressDto emailAddressDto, AddressDto address, String keycloakId) {
         this.id = id;
         this.name = name;
-        this.phoneNumberDto = phoneNumberDto;
-        this.emailAddressDto = emailAddressDto;
-
+        this.phoneNumber = phoneNumberDto;
         this.mobileNumber = mobileNumber;
-        this.addressDto = addressDto;
+        this.email = emailAddressDto;
+        this.address = address;
         this.keycloakId = keycloakId;
     }
 
@@ -29,20 +28,20 @@ public class PersonDto {
         return name;
     }
 
-    public PhoneNumberDto getPhoneNumberDto() {
-        return phoneNumberDto;
+    public PhoneNumberDto getPhoneNumber() {
+        return phoneNumber;
     }
 
     public PhoneNumberDto getMobileNumber() {
         return mobileNumber;
     }
 
-    public EmailAddressDto getEmailAddressDto() {
-        return emailAddressDto;
+    public EmailAddressDto getEmail() {
+        return email;
     }
 
-    public AddressDto getAddressDto() {
-        return addressDto;
+    public AddressDto getAddress() {
+        return address;
     }
 
     public String getKeycloakId() {
@@ -52,11 +51,11 @@ public class PersonDto {
     public static class PersonDtoBuilder {
         private int id;
         private String name;
-        private PhoneNumberDto phoneNumberDto;
+        private PhoneNumberDto phoneNumber;
         private PhoneNumberDto mobileNumber;
-        private EmailAddressDto emailAddressDto;
-        private AddressDto addressDto;
-        private MembershipDto membershipDto;
+        private EmailAddressDto email;
+        private AddressDto address;
+        private MembershipDto membership;
         private String keycloakId;
 
         public PersonDtoBuilder withId(int id) {
@@ -70,7 +69,7 @@ public class PersonDto {
         }
 
         public PersonDtoBuilder withPhoneNumberDto(PhoneNumberDto phoneNumberDto) {
-            this.phoneNumberDto = phoneNumberDto;
+            this.phoneNumber = phoneNumberDto;
             return this;
         }
 
@@ -80,12 +79,12 @@ public class PersonDto {
         }
 
         public PersonDtoBuilder withEmailAddressDto(EmailAddressDto emailAddressDto) {
-            this.emailAddressDto = emailAddressDto;
+            this.email = emailAddressDto;
             return this;
         }
 
         public PersonDtoBuilder withAddressDto(AddressDto addressDto) {
-            this.addressDto = addressDto;
+            this.address = addressDto;
             return this;
         }
 
@@ -95,7 +94,7 @@ public class PersonDto {
         }
 
         public PersonDto build() {
-            return new PersonDto(id,name,phoneNumberDto, emailAddressDto, mobileNumber,addressDto,keycloakId);
+            return new PersonDto(id,name, phoneNumber, mobileNumber, email, address,keycloakId);
         }
     }
 }

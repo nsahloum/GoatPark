@@ -7,7 +7,7 @@ public class MembersDto {
     private final String phoneNumber;
     private final String mobileNumber;
     private final String email;
-    private final MembershipDto membershipDto;
+    private final MembershipDto membership;
 
     public MembersDto(int id, String name, String phoneNumber, String mobileNumber, String email, MembershipDto membershipDto) {
         this.id = id;
@@ -15,7 +15,7 @@ public class MembersDto {
         this.phoneNumber = phoneNumber;
         this.mobileNumber = mobileNumber;
         this.email = email;
-        this.membershipDto = membershipDto;
+        this.membership = membershipDto;
     }
 
     public int getId() {
@@ -38,8 +38,8 @@ public class MembersDto {
         return email;
     }
 
-    public MembershipDto getMembershipDto() {
-        return membershipDto;
+    public MembershipDto getMembership() {
+        return membership;
     }
 
     public static class MemberDtoBuilder {
