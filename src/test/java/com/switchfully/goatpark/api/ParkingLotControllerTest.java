@@ -11,6 +11,7 @@ import com.switchfully.goatpark.service.dto.parkinglot.ParkingLotDto;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -72,6 +73,24 @@ public class ParkingLotControllerTest {
                 .as(ParkingLotDto.class);
 
         assertThat(parkingLotDto).isNotNull();
+    }
+
+    @Test
+    void endToEnd_GetAllParkingLots() {
+        RestAssured.defaultParser = Parser.JSON;
+        RestAssured
+                .given()
+                .auth()
+                .oauth2(keycloakToken)
+                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
+                .when()
+                .port(port)
+                .get("/parkinglots")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.OK.value());
+
     }
 
     private Person getPersonForTesting() {
