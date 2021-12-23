@@ -36,19 +36,26 @@ class DivisionRepositoryTest {
 
     @Test
     public void getByName() {
-        divisionRepository.findDivisionByName("Division Name");
-        assertThat(division).isNotNull();
+        Division divisionToCheck = divisionRepository.findDivisionByName("Division Name");
+        assertThat(divisionToCheck).isNotNull();
     }
 
     @Test
     public void getByOriginalName() {
-        divisionRepository.findDivisionByOriginalName("Original name");
-        assertThat(division).isNotNull();
+        Division divisionToCheck = divisionRepository.findDivisionByOriginalName("Original name");
+        assertThat(divisionToCheck).isNotNull();
     }
 
     @Test
     public void getAllDivisions(){
         List<Division> divisions = divisionRepository.getAllDivisions();
         assertThat(divisions).isNotNull();
+    }
+
+    @Test
+    public void getById(){
+        int id = division.getId();
+        Division divisionToCheck = divisionRepository.getById(id);
+        assertThat(divisionToCheck.getName()).isEqualTo(division.getName());
     }
 }

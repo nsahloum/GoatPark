@@ -36,7 +36,7 @@ class DivisionControllerTest {
 
     @BeforeAll
     void setUp(){
-        createDivisionDto = new CreateDivisionDto("testName", "OriginalName", "TestDirector", null);
+        createDivisionDto = new CreateDivisionDto("testName", "OriginalName", "TestDirector", 0);
         url = "https://keycloak.switchfully.com/auth/realms/java-oct-2021/protocol/openid-connect/token";
 
         response = RestAssured
@@ -78,7 +78,7 @@ class DivisionControllerTest {
     @Test
     void endToEnd_GetAllDivisions(){
         RestAssured.defaultParser = Parser.JSON;
-        CreateDivisionDto createDivisionDto2 = new CreateDivisionDto("testName2", "OriginalName2", "TestDirector");
+        CreateDivisionDto createDivisionDto2 = new CreateDivisionDto("testName2", "OriginalName2", "TestDirector", 0);
         divisionService.createDivision(createDivisionDto2);
         List<DivisionDto> divisionDto = RestAssured
                 .given()
