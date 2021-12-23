@@ -2,6 +2,7 @@ package com.switchfully.goatpark.api;
 
 import com.switchfully.goatpark.security.KeycloakService;
 import com.switchfully.goatpark.service.dto.member.create.*;
+import com.switchfully.goatpark.service.dto.member.returndto.MembersDto;
 import com.switchfully.goatpark.service.dto.member.returndto.PersonDto;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -20,8 +21,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-//@Disabled
-// We can run it once, then we need to delete the user in KeyCloak, otherwise it will start failing
 class MemberControllerTest {
 
     @LocalServerPort
@@ -43,7 +42,6 @@ class MemberControllerTest {
 
         RestAssured.defaultParser = Parser.JSON;
 
-
         PersonDto personDto = RestAssured
                 .given()
                 .body(createMemberDto)
@@ -63,4 +61,10 @@ class MemberControllerTest {
         assertThat(personDto.getName()).isEqualTo("name");
     }
 
+    @Test
+    void endToEnd_getAllMembers() {
+        RestAssured.defaultParser = Parser.JSON;
+
+//        List<MembersDto> membersDtoList = RestAssured.
+    }
 }

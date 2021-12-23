@@ -52,7 +52,7 @@ public class MemberMapper {
                                 person.getMobileNumber().getPrefix(),
                                 person.getMobileNumber().getNumber()))
                 .withEmailAddressDto(
-                        new EmailAdresDto(
+                        new EmailAddressDto(
                                 person.getEmailAddress().getUsername(),
                                 person.getEmailAddress().getDomain()))
                 .withAddressDto(
@@ -75,7 +75,7 @@ public class MemberMapper {
                                 person.getPhoneNumber().getPrefix(),
                                 person.getPhoneNumber().getNumber()))
                 .withEmailAddressDto(
-                        new EmailAdresDto(
+                        new EmailAddressDto(
                                 person.getEmailAddress().getUsername(),
                                 person.getEmailAddress().getDomain()))
                 .withMembershipDto(

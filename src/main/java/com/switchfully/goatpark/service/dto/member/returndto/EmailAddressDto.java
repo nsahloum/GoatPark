@@ -1,11 +1,11 @@
 package com.switchfully.goatpark.service.dto.member.returndto;
 
-public class EmailAdresDto {
+public class EmailAddressDto {
 
     private final String username;
     private final String domain;
 
-    public EmailAdresDto(String username, String domain) {
+    public EmailAddressDto(String username, String domain) {
         this.username = username;
         this.domain = domain;
     }

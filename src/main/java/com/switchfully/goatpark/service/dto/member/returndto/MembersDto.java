@@ -11,7 +11,7 @@ public class MembersDto {
         this.id = memberDtoBuilder.id;
         this.name = memberDtoBuilder.name;
         this.phoneNumberDto = memberDtoBuilder.phoneNumberDto;
-        this.email = memberDtoBuilder.emailAdresDto.getUsername() + "@" + memberDtoBuilder.emailAdresDto.getDomain();
+        this.email = memberDtoBuilder.emailAddressDto.getUsername() + "@" + memberDtoBuilder.emailAddressDto.getDomain();
         this.membershipDto = memberDtoBuilder.membershipDto;
     }
 
@@ -39,7 +39,7 @@ public class MembersDto {
         private int id;
         private String name;
         private PhoneNumberDto phoneNumberDto;
-        private EmailAdresDto emailAdresDto;
+        private EmailAddressDto emailAddressDto;
         private MembershipDto membershipDto;
 
         public MemberDtoBuilder withId(int id) {
@@ -57,8 +57,8 @@ public class MembersDto {
             return this;
         }
 
-        public MemberDtoBuilder withEmailAddressDto(EmailAdresDto emailAdresDto) {
-            this.emailAdresDto = emailAdresDto;
+        public MemberDtoBuilder withEmailAddressDto(EmailAddressDto emailAddressDto) {
+            this.emailAddressDto = emailAddressDto;
             return this;
         }
 
