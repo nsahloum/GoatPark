@@ -22,13 +22,10 @@ public class MemberRepository {
 
         manager.persist(person);
 
-//        String sql = "SELECT p FROM Person p WHERE p.name = :name";
-//        Person result = manager.createQuery(sql, Person.class)
-//                .setParameter("name", person.getName())
-//                .getSingleResult();
-//
-//        return manager.find(Person.class, result.getId());
-        return person;
+        String sql = "SELECT p FROM Person p WHERE p.emailAddress = :email";
+        return manager.createQuery(sql, Person.class)
+                .setParameter("email", person.getEmailAddress())
+                .getSingleResult();
     }
 
     public List<Person> getAllMembers() {
