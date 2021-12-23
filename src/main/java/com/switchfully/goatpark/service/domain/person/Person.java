@@ -2,7 +2,6 @@ package com.switchfully.goatpark.service.domain.person;
 
 import com.switchfully.goatpark.service.domain.address.Address;
 import com.switchfully.goatpark.service.domain.person.emailaddress.EmailAddress;
-import com.switchfully.goatpark.service.domain.person.membership.LicensePlate;
 import com.switchfully.goatpark.service.domain.person.membership.Membership;
 import com.switchfully.goatpark.service.domain.person.phonenumber.PhoneNumber;
 
@@ -77,5 +76,49 @@ public class Person {
 
     public Membership getMembership() {
         return membership;
+    }
+
+    public static class PersonBuilder {
+
+        private String name;
+        private PhoneNumber phoneNumber;
+        private PhoneNumber mobileNumber;
+        private EmailAddress emailAddress;
+        private Address address;
+        private Membership membership;
+
+        public PersonBuilder withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public PersonBuilder withPhoneNumber(PhoneNumber phoneNumber) {
+            this.phoneNumber = phoneNumber;
+            return this;
+        }
+
+        public PersonBuilder withMobileNumber(PhoneNumber mobileNumber) {
+            this.mobileNumber = mobileNumber;
+            return this;
+        }
+
+        public PersonBuilder withEmailAddress(EmailAddress emailAddress) {
+            this.emailAddress = emailAddress;
+            return this;
+        }
+
+        public PersonBuilder withAddress(Address address) {
+            this.address = address;
+            return this;
+        }
+
+        public PersonBuilder withMembership(Membership membership) {
+            this.membership = membership;
+            return this;
+        }
+
+        public Person build() {
+            return new Person(name, phoneNumber, mobileNumber, emailAddress, address, membership);
+        }
     }
 }
