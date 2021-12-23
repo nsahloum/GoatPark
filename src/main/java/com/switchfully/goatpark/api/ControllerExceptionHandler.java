@@ -1,6 +1,5 @@
 package com.switchfully.goatpark.api;
 
-import com.switchfully.goatpark.exception.NotExistingDivisionException;
 import com.switchfully.goatpark.exception.NotUniqueException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,10 +19,6 @@ public class ControllerExceptionHandler {
         response.sendError(HttpServletResponse.SC_BAD_REQUEST, exception.getMessage());
     }
 
-    @ExceptionHandler (NotExistingDivisionException.class)
-    protected void notExistingDivisionException(NotExistingDivisionException exception, HttpServletResponse response) throws IOException {
-        response.sendError(HttpServletResponse.SC_BAD_REQUEST, exception.getMessage());
-    }
 
     @ExceptionHandler (Exception.class)
     protected void exceptionHandling(Exception ex, HttpServletResponse response) throws IOException {

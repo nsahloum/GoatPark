@@ -27,10 +27,6 @@ public class DivisionService {
             throw new NotUniqueException("This company already exist in the database");
         }
 
-//        if (divisionRepository.getById(divisionToCreate.getParentId()) == null) {
-//            throw new NotExistingDivisionException("This division doesn't exist in the database");
-//        }
-
         Division divisionToSave = divisionMapper.mapCreateDivisionDtoToDivision(divisionToCreate);
         divisionRepository.save(divisionToSave);
         return divisionMapper.mapDivisionToDivisionDto(divisionToSave);
