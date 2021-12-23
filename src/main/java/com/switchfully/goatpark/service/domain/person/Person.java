@@ -2,6 +2,7 @@ package com.switchfully.goatpark.service.domain.person;
 
 import com.switchfully.goatpark.service.domain.address.Address;
 import com.switchfully.goatpark.service.domain.person.emailaddress.EmailAddress;
+import com.switchfully.goatpark.service.domain.person.membership.LicensePlate;
 import com.switchfully.goatpark.service.domain.person.membership.Membership;
 import com.switchfully.goatpark.service.domain.person.phonenumber.PhoneNumber;
 
@@ -58,11 +59,18 @@ public class Person {
         return name;
     }
 
+    // TODO: this will have to become obligated
     public PhoneNumber getPhoneNumber() {
+        if (mobileNumber == null) {
+            return new PhoneNumber("null", "null");
+        }
         return phoneNumber;
     }
 
     public PhoneNumber getMobileNumber() {
+        if (mobileNumber == null) {
+            return new PhoneNumber("null", "null");
+        }
         return mobileNumber;
     }
 
@@ -72,5 +80,9 @@ public class Person {
 
     public Address getAddress() {
         return address;
+    }
+
+    public Membership getMembership() {
+        return membership;
     }
 }

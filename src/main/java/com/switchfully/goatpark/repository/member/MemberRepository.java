@@ -32,7 +32,7 @@ public class MemberRepository {
     }
 
     public List<Person> getAllMembers() {
-        String sql = "SELECT p FROM Person p WHERE p.membership IS NULL";
+        String sql = "SELECT p FROM Person p WHERE p.membership IS NOT NULL";
         return manager.createQuery(sql, Person.class).getResultList();
     }
 }

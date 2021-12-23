@@ -16,33 +16,26 @@ public class MemberMapper {
 
     public Person map(CreateMemberDto createMemberDto) {
         return new Person(
-                createMemberDto.getName(),
+                createMemberDto.name(),
                 new PhoneNumber(
-                        createMemberDto.getPhoneNumber().getPrefix(),
-                        createMemberDto.getPhoneNumber().getNumber()
-                ),
+                        createMemberDto.phoneNumber().getPrefix(),
+                        createMemberDto.phoneNumber().getNumber()),
                 new PhoneNumber(
-                        createMemberDto.getMobileNumber().getPrefix(),
-                        createMemberDto.getMobileNumber().getNumber()
-                ),
+                        createMemberDto.mobileNumber().getPrefix(),
+                        createMemberDto.mobileNumber().getNumber()),
                 new EmailAddress(
-                        createMemberDto.getEmailAddress().getUsername(),
-                        createMemberDto.getEmailAddress().getDomain()
-                ),
+                        createMemberDto.emailAddress().getUsername(),
+                        createMemberDto.emailAddress().getDomain()),
                 new Address(
-                        createMemberDto.getCreateAddressDto().getStreetName(),
-                        createMemberDto.getCreateAddressDto().getStreetNumber(),
+                        createMemberDto.createAddressDto().getStreetName(),
+                        createMemberDto.createAddressDto().getStreetNumber(),
                         new PostalCode(
-                                createMemberDto.getCreateAddressDto().getPostalCode().getCode(),
-                                createMemberDto.getCreateAddressDto().getPostalCode().getLabel()
-                        )),
+                                createMemberDto.createAddressDto().getPostalCode().getCode(),
+                                createMemberDto.createAddressDto().getPostalCode().getLabel())),
                 new Membership(
                         new LicensePlate(
-                                createMemberDto.getLicensePlate().getNumberPlate(),
-                                createMemberDto.getLicensePlate().getCountryCode()
-                        )
-                )
-        );
+                                createMemberDto.licensePlate().getNumberPlate(),
+                                createMemberDto.licensePlate().getCountryCode())));
     }
 
     public PersonDto map(Person person, String keycloackId) {
@@ -52,28 +45,44 @@ public class MemberMapper {
                 .withKeycloakId(keycloackId)
                 .withPhoneNumberDto(
                         new PhoneNumberDto(
-                                person.getId(),
                                 person.getPhoneNumber().getPrefix(),
                                 person.getPhoneNumber().getNumber()))
                 .withMobileNumber(
                         new PhoneNumberDto(
-                                person.getId(),
                                 person.getMobileNumber().getPrefix(),
                                 person.getMobileNumber().getNumber()))
                 .withEmailAddressDto(
                         new EmailAdresDto(
-                                person.getEmailAddress().getId(),
                                 person.getEmailAddress().getUsername(),
                                 person.getEmailAddress().getDomain()))
                 .withAddressDto(
                         new AddressDto(
-                                person.getAddress().getId(),
                                 person.getAddress().getStreetName(),
                                 person.getAddress().getStreetNumber(),
                                 new PostalCodeDto(
                                         person.getAddress().getPostalCode().getId(),
                                         person.getAddress().getPostalCode().getCode(),
                                         person.getAddress().getPostalCode().getLabel())))
+                .build();
+    }
+
+    public MembersDto map(Person person) {
+        return new MembersDto.MemberDtoBuilder()
+                .withId(person.getId())
+                .withName(person.getName())
+                .withPhoneNumberDto(
+                        new PhoneNumberDto(
+                                person.getPhoneNumber().getPrefix(),
+                                person.getPhoneNumber().getNumber()))
+                .withEmailAddressDto(
+                        new EmailAdresDto(
+                                person.getEmailAddress().getUsername(),
+                                person.getEmailAddress().getDomain()))
+                .withMembershipDto(
+                        new MembershipDto(
+                                person.getMembership().getRegistrationDate(),
+                                person.getMembership().getLicensePlate().getNumberPlate())
+                )
                 .build();
     }
 }

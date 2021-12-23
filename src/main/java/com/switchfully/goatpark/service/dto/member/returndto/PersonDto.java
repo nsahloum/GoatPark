@@ -5,21 +5,21 @@ public class PersonDto {
     private final int id;
     private final String name;
     private final PhoneNumberDto phoneNumberDto;
-    private final PhoneNumberDto mobileNumber;
     private final EmailAdresDto emailAdresDto;
+    private final MembershipDto membershipDto;
+    private final PhoneNumberDto mobileNumber;
     private final AddressDto addressDto;
     private final String keycloakId;
-    private final MembershipDto membershipDto;
 
-    private PersonDto(int id, String name, String keycloakId, PhoneNumberDto phoneNumberDto, PhoneNumberDto mobileNumber, EmailAdresDto emailAdresDto, AddressDto addressDto, MembershipDto membershipDto) {
-        this.id = id;
-        this.name = name;
-        this.keycloakId = keycloakId;
-        this.phoneNumberDto = phoneNumberDto;
-        this.mobileNumber = mobileNumber;
-        this.emailAdresDto = emailAdresDto;
-        this.addressDto = addressDto;
-        this.membershipDto = membershipDto;
+    private PersonDto(PersonDtoBuilder personDtoBuilder) {
+        this.id = personDtoBuilder.id;
+        this.name = personDtoBuilder.name;
+        this.keycloakId = personDtoBuilder.keycloakId;
+        this.phoneNumberDto = personDtoBuilder.phoneNumberDto;
+        this.mobileNumber = personDtoBuilder.mobileNumber;
+        this.emailAdresDto = personDtoBuilder.emailAdresDto;
+        this.addressDto = personDtoBuilder.addressDto;
+        this.membershipDto = personDtoBuilder.membershipDto;
     }
 
     public int getId() {
@@ -97,7 +97,7 @@ public class PersonDto {
         }
 
         public PersonDto build() {
-            return new PersonDto(id, name, keycloakId, phoneNumberDto, mobileNumber, emailAdresDto, addressDto, membershipDto);
+            return new PersonDto(this);
         }
 
         public PersonDtoBuilder withKeycloakId(String keycloakId) {
