@@ -1,6 +1,7 @@
 package com.switchfully.goatpark.api;
 
 import com.switchfully.goatpark.service.division.DivisionService;
+import com.switchfully.goatpark.service.domain.person.Person;
 import com.switchfully.goatpark.service.dto.division.CreateDivisionDto;
 import com.switchfully.goatpark.service.dto.division.DivisionDto;
 import org.springframework.http.HttpStatus;
@@ -9,7 +10,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/divisions", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -26,4 +27,12 @@ public class DivisionController {
     public DivisionDto createDivision(@RequestBody CreateDivisionDto divisionToCreate){
         return divisionService.createDivision(divisionToCreate);
     }
+
+    @GetMapping
+    @PreAuthorize("hasAnyAuthority('GET_ALL_DIVISIONS')")
+    @ResponseStatus(HttpStatus.OK)
+    public List<DivisionDto> getAllMembers() {
+        return divisionService.getAllDivisions();
+    }
+
 }

@@ -1,7 +1,9 @@
 package com.switchfully.goatpark.security;
 
 public enum Feature {
-    GET_CUSTOMER_HELLO_WORLD,
+    DEFAULT,
     CREATE_DIVISION,
-    GET_ALL_MEMBERS
+    CREATE_PARKING_LOT,
+    GET_ALL_MEMBERS,
+    GET_ALL_DIVISIONS
 }

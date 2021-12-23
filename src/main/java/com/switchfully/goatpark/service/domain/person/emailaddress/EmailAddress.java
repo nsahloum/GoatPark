@@ -1,6 +1,7 @@
 package com.switchfully.goatpark.service.domain.person.emailaddress;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -52,5 +53,18 @@ public class EmailAddress {
     @Override
     public String toString() {
         return username + "@" + domain;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EmailAddress that = (EmailAddress) o;
+        return Objects.equals(username, that.username) && Objects.equals(domain, that.domain);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, domain);
     }
 }

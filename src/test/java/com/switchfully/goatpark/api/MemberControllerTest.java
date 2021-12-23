@@ -2,12 +2,12 @@ package com.switchfully.goatpark.api;
 
 import com.switchfully.goatpark.security.KeycloakService;
 import com.switchfully.goatpark.service.dto.member.create.*;
-import com.switchfully.goatpark.service.dto.member.returndto.MembersDto;
 import com.switchfully.goatpark.service.dto.member.returndto.PersonDto;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
 import org.checkerframework.checker.units.qual.A;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +27,13 @@ class MemberControllerTest {
     private int port;
     @Autowired
     private KeycloakService keycloakService;
+
+    private PersonDto personDto;
+
+    @AfterEach
+    public void tearDown() {
+        keycloakService.deleteUser(personDto.getKeycloakId());
+    }
 
     @Test
     void endToEnd_registerMember() {
@@ -56,7 +63,6 @@ class MemberControllerTest {
                 .extract()
                 .as(PersonDto.class);
 
-        keycloakService.deleteUser(personDto.getKeycloakId());
         assertThat(personDto.getId()).isNotZero();
         assertThat(personDto.getName()).isEqualTo("name");
     }
