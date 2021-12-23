@@ -8,7 +8,7 @@ import static com.switchfully.goatpark.security.Feature.*;
 
 public enum Role {
     // replace nulls with features
-    MANAGER("manager", CREATE_DIVISION, GET_ALL_MEMBERS, CREATE_PARKING_LOT, GET_ALL_DIVISIONS),
+    MANAGER("manager", CREATE_DIVISION, GET_ALL_MEMBERS, GET_ALL_DIVISIONS, CREATE_PARKING_LOT),
     MEMBER("member", DEFAULT);
 
     private final String label;
