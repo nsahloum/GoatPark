@@ -21,7 +21,7 @@ public class ParkingLotService {
     }
 
     public ParkingLotDto createParkingLot(CreateParkingLotDto parkingLotToCreate) {
-        AssertFieldService.assertPersonIsValid(parkingLotToCreate.getContactPerson());
+        AssertFieldService.assertParkingLotIsValid(parkingLotToCreate);
         ParkingLot parkingLotToSave = parkingLotMapper.mapCreateParkingLotDtoToParkingLot(parkingLotToCreate);
         parkingLotRepository.save(parkingLotToSave);
         return parkingLotMapper.mapParkingLotToParkingLotDto(parkingLotToSave);

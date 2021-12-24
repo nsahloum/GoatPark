@@ -37,12 +37,6 @@ public class MemberService {
         return memberMapper.map(memberRepository.registerMember(person), keycloakId);
     }
 
-//    private void assertPhoneNumberIsPressent(CreateMemberDto createMemberDto) {
-//        if (createMemberDto.phoneNumber() == null && createMemberDto.mobileNumber() == null) {
-//            throw new PhoneNumberIsRequiredException("At least one telephone number is required");
-//        }
-//    }
-
     private String addPersonToKeycloak(CreateMemberDto createMemberDto) {
         KeycloakUserDTO keycloakUserDTO = keycloakMapper.map(createMemberDto, Role.MEMBER);
         return keycloakService.addUser(keycloakUserDTO);
