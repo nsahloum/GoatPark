@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.switchfully.goatpark.service.AssertFieldService.assertMembershipIsValid;
+
 @Service
 public class MemberService {
 
@@ -32,7 +34,7 @@ public class MemberService {
 
     public PersonDto registerMember(CreateMemberDto createMemberDto) {
         Person person = memberMapper.map(createMemberDto);
-        AssertFieldService.assertPersonIsValid(person);
+        assertMembershipIsValid(person);
         String keycloakId = addPersonToKeycloak(createMemberDto);
         return memberMapper.map(memberRepository.registerMember(person), keycloakId);
     }

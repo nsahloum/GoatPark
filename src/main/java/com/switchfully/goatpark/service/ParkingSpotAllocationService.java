@@ -11,6 +11,8 @@ import com.switchfully.goatpark.service.dto.parkingallocation.ParkingAllocationD
 import com.switchfully.goatpark.service.mapper.ParkingSpotAllocationMapper;
 import org.springframework.stereotype.Service;
 
+import static com.switchfully.goatpark.service.AssertFieldService.assertParkingAllocationIsValid;
+
 @Service
 public class ParkingSpotAllocationService {
     private ParkingSpotAllocationRepository parkingSpotAllocationRepository;
@@ -26,6 +28,7 @@ public class ParkingSpotAllocationService {
     }
 
     public ParkingAllocationDto createParkingAllocation(CreateParkingAllocationDto createParkingAllocation) {
+        assertParkingAllocationIsValid(createParkingAllocation);
         Person person = memberRepository.getMemberById(createParkingAllocation.getPersonId());
 
         ParkingLot parkingLot = parkingLotRepository.getParkingLotById(createParkingAllocation.getParkingLotId());

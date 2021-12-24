@@ -1,6 +1,8 @@
 package com.switchfully.goatpark.repository.parkinglot;
 
 import com.switchfully.goatpark.domain.parkinglot.ParkingLot;
+import com.switchfully.goatpark.exception.ParkingLotNotFoundException;
+import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +27,13 @@ public class ParkingLotRepository {
     }
 
     public ParkingLot getParkingLotById(int parkingLotId) {
-        return entityManager.find(ParkingLot.class, parkingLotId);
+        String sql = "SELECT p " +
+                "FROM ParkingLot p " +
+                "WHERE p.id = :id";
+        return entityManager.createQuery(sql, ParkingLot.class)
+                .setParameter("id", parkingLotId)
+                .getResultList()
+                .stream().findFirst().orElseThrow(() -> new ParkingLotNotFoundException("This lot doenst exist"));
+
     }
 }
