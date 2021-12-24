@@ -46,7 +46,7 @@ class DivisionControllerTest {
                 .given()
                 .contentType("application/x-www-form-urlencoded; charset=utf-8")
                 .formParam("grant_type", "password")
-                .formParam("username", "manager1")
+                .formParam("username", "manager")
                 .formParam("password", "password")
                 .formParam("client_id", "GoatPark")
                 .when()
