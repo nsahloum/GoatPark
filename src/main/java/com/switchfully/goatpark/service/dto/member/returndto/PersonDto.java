@@ -5,8 +5,8 @@ public class PersonDto {
     private final int id;
     private final String name;
     private final PhoneNumberDto phoneNumber;
-    private final EmailAddressDto email;
     private final PhoneNumberDto mobileNumber;
+    private final EmailAddressDto email;
     private final AddressDto address;
     private final String keycloakId;
 

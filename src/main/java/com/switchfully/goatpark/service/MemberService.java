@@ -1,6 +1,5 @@
 package com.switchfully.goatpark.service;
 
-import com.switchfully.goatpark.exception.PhoneNumberIsRequiredException;
 import com.switchfully.goatpark.repository.member.MemberRepository;
 import com.switchfully.goatpark.security.KeycloakService;
 import com.switchfully.goatpark.security.KeycloakUserDTO;
@@ -32,17 +31,17 @@ public class MemberService {
     }
 
     public PersonDto registerMember(CreateMemberDto createMemberDto) {
-        assertPhoneNumberIsPressent(createMemberDto);
-        String keycloakId = addPersonToKeycloak(createMemberDto);
         Person person = memberMapper.map(createMemberDto);
+        AssertFieldService.assertPersonIsValid(person);
+        String keycloakId = addPersonToKeycloak(createMemberDto);
         return memberMapper.map(memberRepository.registerMember(person), keycloakId);
     }
 
-    private void assertPhoneNumberIsPressent(CreateMemberDto createMemberDto) {
-        if (createMemberDto.phoneNumber() == null && createMemberDto.mobileNumber() == null) {
-            throw new PhoneNumberIsRequiredException("At least one telephone number is required");
-        }
-    }
+//    private void assertPhoneNumberIsPressent(CreateMemberDto createMemberDto) {
+//        if (createMemberDto.phoneNumber() == null && createMemberDto.mobileNumber() == null) {
+//            throw new PhoneNumberIsRequiredException("At least one telephone number is required");
+//        }
+//    }
 
     private String addPersonToKeycloak(CreateMemberDto createMemberDto) {
         KeycloakUserDTO keycloakUserDTO = keycloakMapper.map(createMemberDto, Role.MEMBER);

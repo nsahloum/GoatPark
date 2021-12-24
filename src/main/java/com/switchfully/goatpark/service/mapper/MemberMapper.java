@@ -17,22 +17,25 @@ public class MemberMapper {
     public Person map(CreateMemberDto createMemberDto) {
         Person.PersonBuilder personBuilder = new Person.PersonBuilder()
                 .withName(createMemberDto.name())
-                .withAddress(
-                        new Address(
-                                createMemberDto.address().getStreetName(),
-                                createMemberDto.address().getStreetNumber(),
-                                new PostalCode(
-                                        createMemberDto.address().getPostalCode().getCode(),
-                                        createMemberDto.address().getPostalCode().getLabel())))
                 .withMembership(
-                        new Membership(
-                                new LicensePlate(
-                                        createMemberDto.licensePlate().getNumberPlate(),
-                                        createMemberDto.licensePlate().getCountryCode())))
+                new Membership(
+                        new LicensePlate(
+                                createMemberDto.licensePlate().getNumberPlate(),
+                                createMemberDto.licensePlate().getCountryCode())))
                 .withEmailAddress(
                         new EmailAddress(
                                 createMemberDto.email().getUsername(),
                                 createMemberDto.email().getDomain()));
+        if (createMemberDto.address() != null) {
+                            personBuilder.withAddress(
+                    new Address(
+                            createMemberDto.address().getStreetName(),
+                            createMemberDto.address().getStreetNumber(),
+                            new PostalCode(
+                                    createMemberDto.address().getPostalCode().getCode(),
+                                    createMemberDto.address().getPostalCode().getLabel())));
+
+        }
         if (createMemberDto.phoneNumber() != null) {
             personBuilder.withPhoneNumber(
                     new PhoneNumber(
