@@ -15,10 +15,10 @@ import static com.switchfully.goatpark.service.AssertFieldService.assertParkingA
 
 @Service
 public class ParkingSpotAllocationService {
-    private ParkingSpotAllocationRepository parkingSpotAllocationRepository;
-    private MemberRepository memberRepository;
-    private ParkingLotRepository parkingLotRepository;
-    private ParkingSpotAllocationMapper parkingSpotAllocationMapper;
+    private final ParkingSpotAllocationRepository parkingSpotAllocationRepository;
+    private final MemberRepository memberRepository;
+    private final ParkingLotRepository parkingLotRepository;
+    private final ParkingSpotAllocationMapper parkingSpotAllocationMapper;
 
     public ParkingSpotAllocationService(ParkingSpotAllocationRepository parkingSpotAllocationRepository, MemberRepository memberRepository, ParkingLotRepository parkingLotRepository, ParkingSpotAllocationMapper parkingSpotAllocationMapper) {
         this.parkingSpotAllocationRepository = parkingSpotAllocationRepository;

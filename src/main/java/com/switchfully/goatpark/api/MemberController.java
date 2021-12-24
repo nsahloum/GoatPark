@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(path = "/members", produces = "application/json")
+@RequestMapping(path = "/members", produces = APPLICATION_JSON_VALUE)
 public class MemberController {
 
     private final MemberService memberService;
@@ -22,7 +23,7 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    @PostMapping(consumes = "application/json")
+    @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public PersonDto register(@Valid @RequestBody CreateMemberDto createMemberDto) {
         return memberService.registerMember(createMemberDto);

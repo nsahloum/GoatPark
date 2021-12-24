@@ -1,6 +1,7 @@
 package com.switchfully.goatpark.repository.member;
 
 import com.switchfully.goatpark.domain.person.Person;
+import com.switchfully.goatpark.exception.PersonDoesNotExistException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -34,6 +35,8 @@ public class MemberRepository {
     public Person getMemberById(int personId) {
         return manager.createQuery("select p from Person p where p.id  = :personId", Person.class)
                 .setParameter("personId", personId)
-                .getResultList().stream().findFirst().orElse(null);
+                .getResultList().stream()
+                .findFirst()
+                .orElseThrow(() -> new PersonDoesNotExistException("Could not find this person"));
     }
 }

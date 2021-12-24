@@ -13,7 +13,7 @@ import java.util.List;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @RestController
-@RequestMapping(path = "/parkinglots", produces = APPLICATION_JSON)
+@RequestMapping(path = "/parking-lots", produces = APPLICATION_JSON)
 public class ParkingLotController {
 
     private final ParkingLotService parkingLotService;
