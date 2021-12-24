@@ -2,7 +2,7 @@ package com.switchfully.goatpark.api;
 
 import com.switchfully.goatpark.exception.PhoneNumberIsRequiredException;
 import com.switchfully.goatpark.repository.member.MemberRepository;
-import com.switchfully.goatpark.security.KeycloakService;
+import com.switchfully.goatpark.service.KeycloakService;
 import com.switchfully.goatpark.domain.address.Address;
 import com.switchfully.goatpark.domain.address.PostalCode;
 import com.switchfully.goatpark.domain.person.Person;
@@ -34,6 +34,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class MemberControllerTest {
 
     private static final String MESSAGE = "At least one telephone number is required";
+
     @LocalServerPort
     private int port;
 
@@ -125,7 +126,6 @@ class MemberControllerTest {
                 .extract()
                 .jsonPath()
                 .getList(".", MembersDto.class);
-
 
         assertThat(membersDtoList.stream().anyMatch(x -> x.getName().equals("end to end get all members"))).isTrue();
     }

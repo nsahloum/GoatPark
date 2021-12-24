@@ -21,27 +21,39 @@ public class DivisionRepository {
     }
 
     public Division findDivisionByName(String name) {
-        return entityManager.createQuery("select d from Division d where d.name = :name", Division.class)
+        String sql = "select d " +
+                "from Division d " +
+                "where d.name = :name";
+        return entityManager.createQuery(sql, Division.class)
                 .setParameter("name", name)
-                .getResultList().stream().findFirst().orElse(null);
-
+                .getResultList().stream()
+                .findFirst()
+                .orElse(null);
     }
 
     public Division findDivisionByOriginalName(String originalName) {
-        return entityManager.createQuery("select d from Division d where d.originalName = :originalName", Division.class)
+        String sql = "select d " +
+                "from Division d " +
+                "where d.originalName = :originalName";
+        return entityManager.createQuery(sql, Division.class)
                 .setParameter("originalName", originalName)
-                .getResultList().stream().findFirst().orElse(null);
-
+                .getResultList().stream()
+                .findFirst()
+                .orElse(null);
     }
 
     public List<Division> getAllDivisions() {
         String sql = "SELECT d FROM Division d";
-        return entityManager.createQuery(sql, Division.class).getResultList();
+        return entityManager.createQuery(sql, Division.class)
+                .getResultList();
     }
 
     public Division getById(int id) {
         String sql = "SELECT d FROM Division d WHERE d.id = :id";
-        return entityManager.createQuery(sql,Division.class).setParameter("id", id).getResultList().stream().findFirst().orElse(null);
-
+        return entityManager.createQuery(sql, Division.class)
+                .setParameter("id", id)
+                .getResultList().stream()
+                .findFirst()
+                .orElse(null);
     }
 }

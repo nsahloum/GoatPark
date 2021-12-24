@@ -1,6 +1,7 @@
 package com.switchfully.goatpark.security;
 
 
+import com.switchfully.goatpark.domain.person.Role;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.keycloak.OAuth2Constants;
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
@@ -32,7 +33,7 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
      * This is meant to add the role mapper to keycloak allowing you to map keycloak roles to your own features
      */
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth) {
         KeycloakAuthenticationProvider keycloakAuthenticationProvider = keycloakAuthenticationProvider();
         keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(collection ->
                 collection.stream()

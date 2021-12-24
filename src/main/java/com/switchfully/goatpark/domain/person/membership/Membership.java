@@ -17,7 +17,8 @@ public class Membership {
     @JoinColumn(name = "fk_license_plate_id")
     private LicensePlate licensePlate;
 
-    protected Membership() {}
+    protected Membership() {
+    }
 
     public Membership(LicensePlate licensePlate) {
         this.registrationDate = LocalDate.now();

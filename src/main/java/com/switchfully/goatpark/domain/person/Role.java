@@ -1,10 +1,10 @@
-package com.switchfully.goatpark.security;
+package com.switchfully.goatpark.domain.person;
 
 import com.google.common.collect.Lists;
 
 import java.util.List;
 
-import static com.switchfully.goatpark.security.Feature.*;
+import static com.switchfully.goatpark.domain.person.Feature.*;
 
 public enum Role {
     // replace nulls with features

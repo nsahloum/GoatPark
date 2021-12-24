@@ -8,18 +8,15 @@ import com.switchfully.goatpark.domain.person.Person;
 import com.switchfully.goatpark.domain.person.emailaddress.EmailAddress;
 import com.switchfully.goatpark.domain.person.phonenumber.PhoneNumber;
 import com.switchfully.goatpark.repository.member.MemberRepository;
-import com.switchfully.goatpark.repository.parkingallocation.ParkingSpotAllocationRepository;
 import com.switchfully.goatpark.repository.parkinglot.ParkingLotRepository;
 import com.switchfully.goatpark.service.dto.parkingallocation.CreateParkingAllocationDto;
 import com.switchfully.goatpark.service.dto.parkingallocation.ParkingAllocationDto;
 import com.switchfully.goatpark.service.dto.parkinglot.CreateParkingLotDto;
-import com.switchfully.goatpark.service.dto.parkinglot.ParkingLotDto;
 import com.switchfully.goatpark.service.mapper.ParkingLotMapper;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +26,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @ActiveProfiles("test")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -46,16 +42,13 @@ class ParkingSpotAllocationControllerTest {
     private ParkingLotMapper parkingLotMapper;
 
     private String keycloakToken;
-    private CreateParkingLotDto createParkingLotDto;
-    private Person futureMember;
-    private ParkingLot testParkingLot;
     private CreateParkingAllocationDto createParkingAllocationDto;
 
 
     @BeforeAll
     public void setup() {
-        createParkingLotDto = getCreateParkingLotDto();
-        futureMember = new Person(
+        CreateParkingLotDto createParkingLotDto = getCreateParkingLotDto();
+        Person futureMember = new Person(
                 "name",
                 new PhoneNumber("0478", "757575"),
                 new PhoneNumber("0478", "757575"),
@@ -65,7 +58,7 @@ class ParkingSpotAllocationControllerTest {
         );
 
        futureMember = memberRepository.registerMember(futureMember);
-       testParkingLot = parkingLotRepository.save(parkingLotMapper.mapCreateParkingLotDtoToParkingLot(createParkingLotDto));
+        ParkingLot testParkingLot = parkingLotRepository.save(parkingLotMapper.mapCreateParkingLotDtoToParkingLot(createParkingLotDto));
        createParkingAllocationDto = new CreateParkingAllocationDto(futureMember.getId(), testParkingLot.getId());
 
         String url = "https://keycloak.switchfully.com/auth/realms/java-oct-2021/protocol/openid-connect/token";
@@ -97,7 +90,7 @@ class ParkingSpotAllocationControllerTest {
                 .contentType(ContentType.JSON)
                 .when()
                 .port(port)
-                .post("/parkingallocations")
+                .post("/parking-allocations")
                 .then()
                 .assertThat()
                 .statusCode(HttpStatus.CREATED.value())

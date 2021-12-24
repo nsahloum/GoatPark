@@ -8,9 +8,6 @@ import javax.persistence.*;
 public class Division {
 
     @Id
-    //@SequenceGenerator(name = "divisions_id_seq", sequenceName = "DIVISIONS_ID_SEQ", initialValue = 1, allocationSize = 1)
-    // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "division_seq")
-    // @GeneratedValue(strategy = GenerationType.AUTO)
     @GeneratedValue(generator = "division_seq")
     private int id;
 
@@ -53,7 +50,6 @@ public class Division {
     }
 
     public Integer getParentId() {
-
         return parentId;
     }
 }

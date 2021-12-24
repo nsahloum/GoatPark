@@ -12,8 +12,8 @@ import java.util.List;
 
 @Service
 public class ParkingLotService {
-    private ParkingLotRepository parkingLotRepository;
-    private ParkingLotMapper parkingLotMapper;
+    private final ParkingLotRepository parkingLotRepository;
+    private final ParkingLotMapper parkingLotMapper;
 
     public ParkingLotService(ParkingLotRepository parkingLotRepository, ParkingLotMapper parkingLotMapper) {
         this.parkingLotRepository = parkingLotRepository;
@@ -29,6 +29,6 @@ public class ParkingLotService {
 
     public List<ParkingLotOverviewDto> getAllParkingLots() {
         return parkingLotRepository.getAll().stream()
-                .map(parkingLot -> parkingLotMapper.mapParkingLotToParkingLotOverviewDto(parkingLot)).toList();
+                .map(parkingLotMapper::mapParkingLotToParkingLotOverviewDto).toList();
     }
 }

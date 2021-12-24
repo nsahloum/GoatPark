@@ -55,7 +55,6 @@ public class PersonDto {
         private PhoneNumberDto mobileNumber;
         private EmailAddressDto email;
         private AddressDto address;
-        private MembershipDto membership;
         private String keycloakId;
 
         public PersonDtoBuilder withId(int id) {

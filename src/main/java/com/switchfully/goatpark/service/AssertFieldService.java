@@ -35,7 +35,7 @@ public class AssertFieldService {
 
     public static void assertMembershipIsValid(Person person) {
         assertPersonIsValid(person);
-        assertFieldIsNotNull(person.getMembership().getLicensePlate(), "Licenseplate is required");
+        assertFieldIsNotNull(person.getMembership().getLicensePlate(), "License plate is required");
     }
 
     private static void assertEmailIsValid(EmailAddress emailAddress) {
@@ -44,7 +44,7 @@ public class AssertFieldService {
     }
 
     public static void assertParkingLotIsValid(CreateParkingLotDto parkingLotToCreate) {
-        assertFieldIsNotNull(parkingLotToCreate.getName(), "The parkinglot should have a name");
+        assertFieldIsNotNull(parkingLotToCreate.getName(), "The parking lot should have a name");
         assertFieldIsNotNull(parkingLotToCreate.getCategory(), "Please define the category");
         assertAddressIsValid(parkingLotToCreate.getAddress());
         assertPersonIsValid(parkingLotToCreate.getContactPerson());
@@ -62,13 +62,13 @@ public class AssertFieldService {
     public static void assertDivisionIsValid(CreateDivisionDto createDivisionDto) {
         isValidDivision(createDivisionDto);
         assertFieldIsNotNull(createDivisionDto.getName(), "The name is required");
-        assertEnumIsCorrect(createDivisionDto.getOriginalName(), "The original name is required");
+        assertEnumIsCorrect(createDivisionDto.getOriginalName());
         assertFieldIsNotNull(createDivisionDto.getDirector(), "The director is required");
     }
 
-    private static void assertEnumIsCorrect(String category, String message) {
+    private static void assertEnumIsCorrect(String category) {
         if (EnumUtils.isValidEnum(Category.class, category)) {
-            throw new IncorrectEnumValueException(message);
+            throw new IncorrectEnumValueException("The original name is required");
         }
     }
 
@@ -88,9 +88,9 @@ public class AssertFieldService {
 
     private static void assertAddressIsValid(Address address) {
         assertFieldIsNotNull(address, "A valid address is required");
-        assertFieldIsNotNull(address.getStreetName(), "A valid streetname is required");
-        assertFieldIsNotNull(address.getStreetNumber(), "A valid streetnumber is required");
-        assertFieldIsNotNull(address.getPostalCode().getCode(), "A valid postalcode is required");
+        assertFieldIsNotNull(address.getStreetName(), "A valid street name is required");
+        assertFieldIsNotNull(address.getStreetNumber(), "A valid street number is required");
+        assertFieldIsNotNull(address.getPostalCode().getCode(), "A valid postal code is required");
         assertFieldIsNotNull(address.getPostalCode().getLabel(), "A valid city is required");
     }
 

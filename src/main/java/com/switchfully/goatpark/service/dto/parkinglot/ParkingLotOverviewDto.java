@@ -22,17 +22,9 @@ public class ParkingLotOverviewDto {
         return this;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public ParkingLotOverviewDto setName(String name) {
         this.name = name;
         return this;
-    }
-
-    public int getMaximumCapacity() {
-        return maximumCapacity;
     }
 
     public ParkingLotOverviewDto setMaximumCapacity(int maximumCapacity) {
@@ -40,22 +32,30 @@ public class ParkingLotOverviewDto {
         return this;
     }
 
-    public EmailAddress getContactPersonEmail() {
-        return contactPersonEmail;
-    }
-
     public ParkingLotOverviewDto setContactPersonEmail(EmailAddress contactPersonEmail) {
         this.contactPersonEmail = contactPersonEmail;
         return this;
     }
 
-    public PhoneNumber getContactPersonPhoneNumber() {
-        return contactPersonPhoneNumber;
-    }
-
     public ParkingLotOverviewDto setContactPersonPhoneNumber(PhoneNumber contactPersonPhoneNumber) {
         this.contactPersonPhoneNumber = contactPersonPhoneNumber;
         return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMaximumCapacity() {
+        return maximumCapacity;
+    }
+
+    public EmailAddress getContactPersonEmail() {
+        return contactPersonEmail;
+    }
+
+    public PhoneNumber getContactPersonPhoneNumber() {
+        return contactPersonPhoneNumber;
     }
 
     @Override

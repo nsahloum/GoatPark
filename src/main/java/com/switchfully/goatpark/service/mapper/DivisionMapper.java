@@ -24,6 +24,4 @@ public class DivisionMapper {
                 .setOriginalName(division.getOriginalName())
                 .setParentId(division.getParentId());
     }
-
-
 }

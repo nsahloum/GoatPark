@@ -1,6 +1,8 @@
-package com.switchfully.goatpark.security;
+package com.switchfully.goatpark.service;
 
 import com.google.common.collect.Lists;
+import com.switchfully.goatpark.exception.UserAlreadyExistsException;
+import com.switchfully.goatpark.service.dto.member.KeycloakUserDTO;
 import org.keycloak.admin.client.CreatedResponseUtil;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.resource.ClientResource;
@@ -10,7 +12,6 @@ import org.keycloak.representations.idm.CredentialRepresentation;
 import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.WebApplicationException;
@@ -29,7 +30,6 @@ public class KeycloakService {
         this.realmResource = keycloak.realm(realmName);
     }
 
-    @Profile("!test")
     public String addUser(KeycloakUserDTO keycloakUserDTO) {
         String createdUserId = createUser(keycloakUserDTO);
         getUser(createdUserId).resetPassword(createCredentialRepresentation(keycloakUserDTO.password()));

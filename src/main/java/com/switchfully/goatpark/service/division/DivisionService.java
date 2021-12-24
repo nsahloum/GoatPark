@@ -13,8 +13,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class DivisionService {
-    private DivisionMapper divisionMapper;
-    private DivisionRepository divisionRepository;
+
+    private final DivisionMapper divisionMapper;
+    private final DivisionRepository divisionRepository;
 
     public DivisionService(DivisionMapper divisionMapper, DivisionRepository divisionRepository) {
         this.divisionMapper = divisionMapper;
@@ -31,7 +32,7 @@ public class DivisionService {
     }
 
     public List<DivisionDto> getAllDivisions() {
-        return divisionRepository.getAllDivisions().stream().map(division -> divisionMapper.mapDivisionToDivisionDto(division)).collect(Collectors.toList());
+        return divisionRepository.getAllDivisions().stream().map(divisionMapper::mapDivisionToDivisionDto).collect(Collectors.toList());
     }
 }
 

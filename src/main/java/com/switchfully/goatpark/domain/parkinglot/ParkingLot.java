@@ -33,7 +33,7 @@ public class ParkingLot {
     @Column(name = "price_per_hour")
     private double pricePerHour;
 
-    private ParkingLot() {
+    protected ParkingLot() {
     }
 
     private ParkingLot(ParkingLotBuilder parkingLotBuilder) {

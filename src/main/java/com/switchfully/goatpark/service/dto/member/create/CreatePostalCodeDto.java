@@ -1,11 +1,9 @@
 package com.switchfully.goatpark.service.dto.member.create;
 
-import javax.persistence.Column;
-
 public class CreatePostalCodeDto {
 
-    private String code;
-    private String label;
+    private final String code;
+    private final String label;
 
     public CreatePostalCodeDto(String code, String label) {
         this.code = code;

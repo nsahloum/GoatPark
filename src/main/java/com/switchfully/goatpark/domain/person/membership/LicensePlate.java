@@ -15,7 +15,8 @@ public class LicensePlate {
     @Column(name = "country_code")
     private String countryCode;
 
-    protected LicensePlate(){}
+    protected LicensePlate() {
+    }
 
     public LicensePlate(String numberPlate, String countryCode) {
         this.numberPlate = numberPlate;

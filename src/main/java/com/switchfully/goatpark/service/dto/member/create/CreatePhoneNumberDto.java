@@ -2,8 +2,8 @@ package com.switchfully.goatpark.service.dto.member.create;
 
 public class CreatePhoneNumberDto {
 
-    private String prefix;
-    private String number;
+    private final String prefix;
+    private final String number;
 
     public CreatePhoneNumberDto(String prefix, String number) {
         this.prefix = prefix;

@@ -98,7 +98,4 @@ class DivisionControllerTest {
 
         assertThat(divisionDto).isNotEmpty();
     }
-
-
-
 }

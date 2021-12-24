@@ -15,7 +15,6 @@ public class ParkingSpotAllocationRepository {
         this.manager = manager;
     }
 
-
     @Transactional
     public ParkingSpotAllocation save(ParkingSpotAllocation parkingSpotAllocation) {
         manager.persist(parkingSpotAllocation);

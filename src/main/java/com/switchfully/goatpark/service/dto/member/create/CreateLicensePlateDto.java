@@ -2,9 +2,8 @@ package com.switchfully.goatpark.service.dto.member.create;
 
 public class CreateLicensePlateDto {
 
-
-    private String numberPlate;
-    private String countryCode;
+    private final String numberPlate;
+    private final String countryCode;
 
     public CreateLicensePlateDto(String numberPlate, String countryCode) {
         this.numberPlate = numberPlate;

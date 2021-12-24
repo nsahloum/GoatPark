@@ -1,11 +1,9 @@
 package com.switchfully.goatpark.service.dto.member.create;
 
-import javax.persistence.Column;
-
 public class CreateEmailDto {
 
-    private String username;
-    private String domain;
+    private final String username;
+    private final String domain;
 
     public CreateEmailDto(String username, String domain) {
         this.username = username;

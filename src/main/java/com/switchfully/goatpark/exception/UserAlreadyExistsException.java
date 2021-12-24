@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.security;
+package com.switchfully.goatpark.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

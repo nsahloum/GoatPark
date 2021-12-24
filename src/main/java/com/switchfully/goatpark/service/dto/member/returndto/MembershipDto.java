@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class MembershipDto {
 
     private final LocalDate registrationDate;
-    private String licensePlate;
+    private final String licensePlate;
 
 
     public MembershipDto(LocalDate registrationDate, String licensePlate) {

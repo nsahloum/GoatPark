@@ -16,7 +16,6 @@ public class ParkingSpotAllocation {
 
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "FK_PERSON_ID")
-    // For getting the member id and license plate number
     private Person member;
 
     @OneToOne(cascade = {CascadeType.ALL})
@@ -26,13 +25,12 @@ public class ParkingSpotAllocation {
     @Column(name = "START_DATE_TIME")
     private LocalDateTime startDateTime = LocalDateTime.now();
 
-    private ParkingSpotAllocation() {
-     }
+    protected ParkingSpotAllocation() {
+    }
 
     public ParkingSpotAllocation(Person member, ParkingLot parkingLotId) {
         this.member = member;
         this.parkingLot = parkingLotId;
-        this.startDateTime = startDateTime;
     }
 
     public ParkingSpotAllocation setMember(Person member) {

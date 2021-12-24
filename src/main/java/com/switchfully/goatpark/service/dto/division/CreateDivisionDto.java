@@ -1,18 +1,14 @@
 package com.switchfully.goatpark.service.dto.division;
 
-import com.switchfully.goatpark.repository.division.DivisionRepository;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
 public class CreateDivisionDto {
 
-    private String name;
+    private final String name;
 
-    private String originalName;
+    private final String originalName;
 
-    private String director;
+    private final String director;
 
-    private Integer parentId;
+    private final Integer parentId;
 
     public CreateDivisionDto(String name, String originalName, String director, Integer parentId) {
         this.name = name;
@@ -20,7 +16,6 @@ public class CreateDivisionDto {
         this.director = director;
         this.parentId = parentId;
     }
-
 
     public String getName() {
         return name;

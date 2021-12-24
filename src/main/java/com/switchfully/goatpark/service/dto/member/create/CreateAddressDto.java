@@ -2,9 +2,9 @@ package com.switchfully.goatpark.service.dto.member.create;
 
 public class CreateAddressDto {
 
-    private String streetName;
-    private String streetNumber;
-    private CreatePostalCodeDto postalCode;
+    private final String streetName;
+    private final String streetNumber;
+    private final CreatePostalCodeDto postalCode;
 
     public CreateAddressDto(String streetName, String streetNumber, CreatePostalCodeDto postalCode) {
         this.streetName = streetName;

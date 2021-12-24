@@ -20,7 +20,6 @@ public class PhoneNumber {
 
 
     public PhoneNumber(String prefix, String number) {
-
         this.prefix = checkValidPrefix(prefix);
         this.number = number;
     }
@@ -41,7 +40,9 @@ public class PhoneNumber {
     }
 
     private String checkValidPrefix(String prefix) {
-        if (prefix.length() > PREFIX_MAX_LENGTH) throw new IllegalArgumentException("Prefix is " + PREFIX_MAX_LENGTH + " digits maximum");
+        if (prefix.length() > PREFIX_MAX_LENGTH) {
+            throw new IllegalArgumentException("Prefix is " + PREFIX_MAX_LENGTH + " digits maximum");
+        }
         return prefix;
     }
 }

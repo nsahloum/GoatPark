@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
 @Table(name = "EMAIL_ADDRESS")
 public class EmailAddress {
 
+    private static final String REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+
     @Id
     @GeneratedValue(generator = "email_address_seq")
     private int id;
@@ -19,10 +21,8 @@ public class EmailAddress {
     @Column(name = "DOMAIN")
     private String domain;
 
-    private static final String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-
     public EmailAddress(String username, String domain) {
-        if(!isValidEmail(username + "@" + domain)) {
+        if (!isValidEmail(username + "@" + domain)) {
             throw new IllegalArgumentException("This email address is not valid!");
         }
         this.username = username;
@@ -45,7 +45,7 @@ public class EmailAddress {
     }
 
     public static boolean isValidEmail(String email) {
-        Pattern pattern = Pattern.compile(regex);
+        Pattern pattern = Pattern.compile(REGEX);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }

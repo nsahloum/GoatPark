@@ -1,4 +1,4 @@
-package com.switchfully.goatpark.security;
+package com.switchfully.goatpark.domain.person;
 
 public enum Feature {
     DEFAULT,
