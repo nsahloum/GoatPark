@@ -31,7 +31,7 @@ public class MemberController {
 
 
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('GET_ALL_MEMBERS')")
+    @PreAuthorize("hasAuthority('GET_ALL_MEMBERS')")
     @ResponseStatus(HttpStatus.OK)
     public List<MembersDto> getAllMembers() {
         return memberService.getAllMembers();

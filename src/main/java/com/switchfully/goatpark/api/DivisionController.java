@@ -22,14 +22,14 @@ public class DivisionController {
     }
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAnyAuthority('CREATE_DIVISION')")
+    @PreAuthorize("hasAuthority('CREATE_DIVISION')")
     @ResponseStatus(HttpStatus.CREATED)
     public DivisionDto createDivision(@RequestBody CreateDivisionDto divisionToCreate) {
         return divisionService.createDivision(divisionToCreate);
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('GET_ALL_DIVISIONS')")
+    @PreAuthorize("hasAuthority('GET_ALL_DIVISIONS')")
     @ResponseStatus(HttpStatus.OK)
     public List<DivisionDto> getAllDivisions() {
         return divisionService.getAllDivisions();
