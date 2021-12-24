@@ -24,7 +24,7 @@ public class MemberController {
 
     @PostMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public PersonDto register(@Valid @RequestBody CreateMemberDto createMemberDto) {
+    public PersonDto register(@RequestBody CreateMemberDto createMemberDto) {
         return memberService.registerMember(createMemberDto);
     }
 
